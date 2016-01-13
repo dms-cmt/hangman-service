@@ -196,7 +196,12 @@ FakesAssemblies/
 *.opt
 
 
-# Mono Develop - custom
+# ZI - custom
+
+# Mono Develop
 Properties/*
 *.csproj
 *.sln
+
+#Doxygen
+#doc/*
