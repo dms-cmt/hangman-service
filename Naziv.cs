@@ -8,9 +8,10 @@
 * 	Naziv.cs
 * 
 * Author: Milos Zivlak (zivlakmilos@gmail.com, zi@zivlakmilos.ddns.net)
-* Date: 2015-01-09
+* Date: 2016-01-09
 * 
 * Changes (format: "name", "date", "reasone"):
+* 	Milos Zivlak, 2016-01-13, "Dodat privatni seter za Id"
 * 
 * ToDo (fromat: "task", "[date]", "[name]"):
 * 
@@ -21,6 +22,10 @@ using System;
 
 namespace Hangman
 {
+	/**
+	 * Naziv
+	 * 	Klasa predstavlja jedan red iz tabele naziv
+	 */
 	public class Naziv
 	{
 		/*
@@ -42,6 +47,7 @@ namespace Hangman
 		public int? Id
 		{
 			get { return id; }
+			private set { id = value; }
 		}
 
 		/*

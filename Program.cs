@@ -8,7 +8,7 @@
 * 	Program.cs
 * 
 * Author: Milos Zivlak (zivlakmilos@gmail.com, zi@zivlakmilos.ddns.net)
-* Date: 2015-01-09
+* Date: 2016-01-09
 * 
 * Changes (format: "name", "date", "reasone"):
 * 
