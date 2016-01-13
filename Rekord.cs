@@ -1,31 +1,13 @@
-/*
-* Project name:
-* 	Hangman
-* Description:
-* 	Projekat za CMT (Schnider Electric DMS)
-* 
-* File:
-* 	Rekord.cs
-* 
-* Author: Milos Zivlak (zivlakmilos@gmail.com, zi@zivlakmilos.ddns.net)
-* Date: 2016-01-09
-* 
-* Changes (format: "name", "date", "reasone"):
-* 	Milos Zivlak, 2016-01-13, "Dodat privatni seter za Id"
-* 
-* ToDo (fromat: "task", "[date]", "[name]"):
-* 
-* Notes (format: "name", "date", "note"):
-*/
-
 using System;
+using System.Runtime.Serialization;
 
 namespace Hangman
 {
 	/**
-	 * Rekord
+	 * Rekord <br\>
 	 * 	Klasa predstavlja jedan red iz tabele rekordi
 	 */
+	[DataContract]
 	public class Rekord
 	{
 		/*
@@ -41,10 +23,11 @@ namespace Hangman
 		 */
 
 		/**
-		 * Polje Id
-		 * 	nalazi se u bazi podataka
+		 * Polje Id <br\>
+		 * 	nalazi se u bazi podataka <br\>
 		 * 	omoguceno je samo citanje
 		 */
+		[DataMember]
 		public int? Id
 		{
 			get { return id; }
@@ -52,10 +35,11 @@ namespace Hangman
 		}
 
 		/**
-		 * Polje BrojSekundi
-		 * 	broj sekundi za koje je igrac resio "problem"
+		 * Polje BrojSekundi <br\>
+		 * 	broj sekundi za koje je igrac resio "problem" <br\>
 		 * 	omoguceno je citanje i pisanje
 		 */
+		[DataMember]
 		public long BrojSekundi
 		{
 			get { return brojSekundi; }
@@ -63,10 +47,11 @@ namespace Hangman
 		}
 
 		/**
-		 * Polje ImeKorisnika
-		 * 	ime korisnika koji je dostigao rekord
+		 * Polje ImeKorisnika <br\>
+		 * 	ime korisnika koji je dostigao rekord <br\>
 		 * 	moguce je citanje i pisanje
 		 */
+		[DataMember]
 		public String ImeKorisnika
 		{
 			get { return imeKorisnika; }
@@ -78,9 +63,9 @@ namespace Hangman
 		 */
 
 		/**
-		 * Prima dva argumenta
-		 * 	id - iz baze ili null
-		 * 	brojSekundi - broj sekundi za koje je korisnika resio "problem"
+		 * Prima dva argumenta <br\>
+		 * 	id - iz baze ili null <br\>
+		 * 	brojSekundi - broj sekundi za koje je korisnika resio "problem" <br\>
 		 * 	imeKorisnika - ime korisnika koji je dostigao rekors
 		 */
 		public Rekord (int? id, long brojSekundi, String imeKorisnika)

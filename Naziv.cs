@@ -1,31 +1,13 @@
-/*
-* Project name:
-* 	Hangman
-* Description:
-* 	Projekat za CMT (Schnider Electric DMS)
-* 
-* File:
-* 	Naziv.cs
-* 
-* Author: Milos Zivlak (zivlakmilos@gmail.com, zi@zivlakmilos.ddns.net)
-* Date: 2016-01-09
-* 
-* Changes (format: "name", "date", "reasone"):
-* 	Milos Zivlak, 2016-01-13, "Dodat privatni seter za Id"
-* 
-* ToDo (fromat: "task", "[date]", "[name]"):
-* 
-* Notes (format: "name", "date", "note"):
-*/
-
 using System;
+using System.Runtime.Serialization;
 
 namespace Hangman
 {
 	/**
-	 * Naziv
+	 * Naziv <br\>
 	 * 	Klasa predstavlja jedan red iz tabele naziv
 	 */
+	[DataContract]
 	public class Naziv
 	{
 		/*
@@ -40,10 +22,11 @@ namespace Hangman
 		 */
 
 		/**
-		 * Polje Id
-		 * 	nalazi se u bazi podataka
+		 * Polje Id <br\>
+		 * 	nalazi se u bazi podataka <br\>
 		 * 	omoguceno je samo citanje
 		 */
+		[DataMember]
 		public int? Id
 		{
 			get { return id; }
@@ -51,10 +34,11 @@ namespace Hangman
 		}
 
 		/**
-		 * Polje Title
-		 * 	sadrzi naziv filma
+		 * Polje Title <br\>
+		 * 	sadrzi naziv filma <br\>
 		 * 	omoguceno je citanje i pisanje
 		 */
+		[DataMember]
 		public String Title
 		{
 			get { return title; }
@@ -66,8 +50,8 @@ namespace Hangman
 		 */
 
 		/**
-		 * Prima dva ardumenta
-		 * 	id - id naziva iz baze ili NULL
+		 * Prima dva ardumenta <br\>
+		 * 	id - id naziva iz baze ili NULL <br\>
 		 * 	title - naziv filma
 		 */
 		public Naziv (int? id, String title)
