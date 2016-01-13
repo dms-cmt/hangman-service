@@ -1,11 +1,14 @@
 using System;
+using System.Collections.Generic;
+using Hangman;
 
-namespace Hangman
+namespace HangmanService
 {
 	class MainClass
 	{
-		public static void Main (string[] args)
+		public static int Main (string[] args)
 		{
+			return 0;
 		}
 	}
 }

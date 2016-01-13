@@ -26,6 +26,7 @@ USE hangman;
 CREATE TABLE IF NOT EXISTS rekordi
 (
     id int NOT NULL AUTO_INCREMENT,
+    broj_pogresnih_slova int NULL,
     broj_sekundi bigint NULL,
     ime_korisnika varchar(50) NULL,
     PRIMARY KEY(id)

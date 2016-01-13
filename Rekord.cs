@@ -15,6 +15,7 @@ namespace Hangman
 		 */
 
 		private int? id;
+		private int brojPogresnihSlova;
 		private long brojSekundi;
 		private String imeKorisnika;
 
@@ -32,6 +33,18 @@ namespace Hangman
 		{
 			get { return id; }
 			private set { id = value; }
+		}
+
+		/**
+		 * Polje BrojPogresnihSlova <br\>
+		 * 	broj slova koja je korisnik pogresio <br\>
+		 * 	prilikom resavanja "problema"
+		 */
+		[DataMember]
+		public int BrojPogresnihSlova
+		{
+			get { return brojPogresnihSlova; }
+			set { brojPogresnihSlova = value; }
 		}
 
 		/**
@@ -63,14 +76,16 @@ namespace Hangman
 		 */
 
 		/**
-		 * Prima dva argumenta <br\>
+		 * Prima tri argumenta <br\>
 		 * 	id - iz baze ili null <br\>
+		 *	brojPogresnihSlova - broj slova koje je korisnik pograsio <br\>
 		 * 	brojSekundi - broj sekundi za koje je korisnika resio "problem" <br\>
 		 * 	imeKorisnika - ime korisnika koji je dostigao rekors
 		 */
-		public Rekord (int? id, long brojSekundi, String imeKorisnika)
+		public Rekord (int? id, int brojPogresnihSlova, long brojSekundi, String imeKorisnika)
 		{
 			Id = id;
+			BrojPogresnihSlova = brojPogresnihSlova;
 			BrojSekundi = brojSekundi;
 			ImeKorisnika = imeKorisnika;
 		}

@@ -25,11 +25,7 @@ namespace HangmanService
 		*/
 		public List<Rekord> preuzmiRekorde(int? br)
 		{
-			if (br == null)
-			{
-			} else
-			{
-			}
+			return Data.preuzmiRekorde (br);
 		}
 	}
 }
