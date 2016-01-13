@@ -1,0 +1,52 @@
+.TH "Hangman.Rekord" 3 "Wed Jan 13 2016" "Version 1.0" "hangman-service" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Hangman.Rekord \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Javni članovi"
+
+.in +1c
+.ti -1c
+.RI "\fBRekord\fP (int?id, int brojPogresnihSlova, long brojSekundi, String imeKorisnika)"
+.br
+.in -1c
+.SS "Osobine"
+
+.in +1c
+.ti -1c
+.RI "int \fBId\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "int \fBBrojPogresnihSlova\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "long \fBBrojSekundi\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "String \fBImeKorisnika\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Opširniji opis"
+.PP 
+\fBRekord\fP <br> Klasa predstavlja jedan red iz tabele rekordi 
+.SH "Dokumentacija konstruktora i destruktora"
+.PP 
+.SS "Hangman\&.Rekord\&.Rekord (int? id, int brojPogresnihSlova, long brojSekundi, String imeKorisnika)\fC [inline]\fP"
+Prima tri argumenta <br> id - iz baze ili null <br> brojPogresnihSlova - broj slova koje je korisnik pograsio <br> brojSekundi - broj sekundi za koje je korisnika resio 'problem' <br> imeKorisnika - ime korisnika koji je dostigao rekors 
+.SH "Dokumentacija osobina"
+.PP 
+.SS "int Hangman\&.Rekord\&.BrojPogresnihSlova\fC [get]\fP, \fC [set]\fP"
+Polje BrojPogresnihSlova <br> broj slova koja je korisnik pogresio <br> prilikom resavanja 'problema' 
+.SS "long Hangman\&.Rekord\&.BrojSekundi\fC [get]\fP, \fC [set]\fP"
+Polje BrojSekundi <br> broj sekundi za koje je igrac resio 'problem' <br> omoguceno je citanje i pisanje 
+.SS "int Hangman\&.Rekord\&.Id\fC [get]\fP"
+Polje Id <br> nalazi se u bazi podataka <br> omoguceno je samo citanje 
+.SS "String Hangman\&.Rekord\&.ImeKorisnika\fC [get]\fP, \fC [set]\fP"
+Polje ImeKorisnika <br> ime korisnika koji je dostigao rekord <br> moguce je citanje i pisanje 
+
+.SH "Autor"
+.PP 
+Napravljeno automatski korišćenjem alata Doxygen za projekat hangman-service od izvornog koda\&.
