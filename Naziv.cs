@@ -39,7 +39,7 @@ namespace Hangman
 		 * Polja
 		 */
 
-		/*
+		/**
 		 * Polje Id
 		 * 	nalazi se u bazi podataka
 		 * 	omoguceno je samo citanje
@@ -50,7 +50,7 @@ namespace Hangman
 			private set { id = value; }
 		}
 
-		/*
+		/**
 		 * Polje Title
 		 * 	sadrzi naziv filma
 		 * 	omoguceno je citanje i pisanje
@@ -65,7 +65,7 @@ namespace Hangman
 		 * Konstruktori
 		 */
 
-		/*
+		/**
 		 * Prima dva ardumenta
 		 * 	id - id naziva iz baze ili NULL
 		 * 	title - naziv filma
