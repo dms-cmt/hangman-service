@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ServiceModel;
+using System.Runtime.Serialization;
 using System.Collections.Generic;
 using Hangman;
 
@@ -23,6 +24,7 @@ namespace HangmanService
 		 * vraca sve rekorde
 		 */
 		[OperationContract]
+		[FaultContract(typeof(ServiceFault))]
 		List<Rekord> PreuzmiRekorde(int? br);
 	}
 }
