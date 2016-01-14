@@ -45,8 +45,8 @@ namespace Hangman
 		 */
 
 		/**
-		 * Prima dva argumenta:
-		 * 	errorMeesage - poruka o gresci
+		 * Prima dva argumenta:\n
+		 * 	errorMeesage - poruka o gresci\n
 		 *  errorDetail - detalji o gresci
 		 */
 		public ServiceFault (string errorMessage, string errorDetail)
