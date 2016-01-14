@@ -6,6 +6,7 @@ namespace HangmanService
 {
 	public class HangmanService : IHangmanService
 	{
+
 		public HangmanService ()
 		{
 		}
@@ -19,13 +20,20 @@ namespace HangmanService
 		 */
 
 		/**
-		* Metoda vraca listu Rekordas <br\>
+		* Metoda vraca listu Rekordas \n
 		* 	id - broj rekorda za preuzimanje,
 		*		ako je null vraca sve rekorde
 		*/
-		public List<Rekord> preuzmiRekorde(int? br)
+		public List<Rekord> PreuzmiRekorde(int? br)
 		{
-			return Data.preuzmiRekorde (br);
+			List<Rekord> rekordi;
+			using (Data data = new Data ())
+			{
+				data.Open ();
+				rekordi = data.PreuzmiRekorde (br);
+			}
+
+			return rekordi;
 		}
 	}
 }

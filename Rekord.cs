@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace Hangman
 {
 	/**
-	 * Rekord <br\>
+	 * Rekord \n
 	 * 	Klasa predstavlja jedan red iz tabele rekordi
 	 */
 	[DataContract]
@@ -24,8 +24,8 @@ namespace Hangman
 		 */
 
 		/**
-		 * Polje Id <br\>
-		 * 	nalazi se u bazi podataka <br\>
+		 * Polje Id \n
+		 * 	nalazi se u bazi podataka \n
 		 * 	omoguceno je samo citanje
 		 */
 		[DataMember]
@@ -36,8 +36,8 @@ namespace Hangman
 		}
 
 		/**
-		 * Polje BrojPogresnihSlova <br\>
-		 * 	broj slova koja je korisnik pogresio <br\>
+		 * Polje BrojPogresnihSlova \n
+		 * 	broj slova koja je korisnik pogresio \n
 		 * 	prilikom resavanja "problema"
 		 */
 		[DataMember]
@@ -48,8 +48,8 @@ namespace Hangman
 		}
 
 		/**
-		 * Polje BrojSekundi <br\>
-		 * 	broj sekundi za koje je igrac resio "problem" <br\>
+		 * Polje BrojSekundi \n
+		 * 	broj sekundi za koje je igrac resio "problem" \n
 		 * 	omoguceno je citanje i pisanje
 		 */
 		[DataMember]
@@ -60,8 +60,8 @@ namespace Hangman
 		}
 
 		/**
-		 * Polje ImeKorisnika <br\>
-		 * 	ime korisnika koji je dostigao rekord <br\>
+		 * Polje ImeKorisnika \n
+		 * 	ime korisnika koji je dostigao rekord \n
 		 * 	moguce je citanje i pisanje
 		 */
 		[DataMember]
@@ -76,10 +76,10 @@ namespace Hangman
 		 */
 
 		/**
-		 * Prima tri argumenta <br\>
-		 * 	id - iz baze ili null <br\>
-		 *	brojPogresnihSlova - broj slova koje je korisnik pograsio <br\>
-		 * 	brojSekundi - broj sekundi za koje je korisnika resio "problem" <br\>
+		 * Prima tri argumenta \n
+		 * 	id - iz baze ili null \n
+		 *	brojPogresnihSlova - broj slova koje je korisnik pograsio \n
+		 * 	brojSekundi - broj sekundi za koje je korisnika resio "problem" \n
 		 * 	imeKorisnika - ime korisnika koji je dostigao rekors
 		 */
 		public Rekord (int? id, int brojPogresnihSlova, long brojSekundi, String imeKorisnika)

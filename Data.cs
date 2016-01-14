@@ -5,7 +5,7 @@ using System.Data;
 
 namespace Hangman
 {
-	public static class Data
+	public class Data : IDisposable
 	{
 		/*
 		 * Global variables
@@ -18,65 +18,89 @@ namespace Hangman
 			"Password=cmt2#;" +
 			"Pooling=false;";
 
-		//private static MySqlConnection conn = null;
-		//private static MySqlCommand cmd = null;
-		//private static MySqlDataAdapter dataAdapter = null;
+		private MySqlConnection conn = null;
+		private MySqlCommand cmd = null;
+		private MySqlDataAdapter dataAdapter = null;
 
 		/*
 		 * Pulib methods
 		 */
 
 		/*
-		 * Preuzima rekorde iz baze
-		 * 	id - broj rekorda, ili null za sve
+		 * Otvara konekciju na bazu podataka
 		 */
-		public static List<Rekord> preuzmiRekorde(int? br)
+		public void Open ()
 		{
-			List<Rekord> rekordi = new List<Rekord> ();
-			MySqlConnection conn = null;
-			MySqlCommand cmd = null;
-			MySqlDataAdapter adapter = new MySqlDataAdapter();
-			DataSet ds = new DataSet();
-			DataRow[] rows;
-			int i;
-			int max;
-
 			try
 			{
 				conn = new MySqlConnection (connectionString);
 				conn.Open ();
-				string query = "SELECT * FROM rekordi ORDER BY broj_sekundi ASC;";
+				dataAdapter = new MySqlDataAdapter ();
+			} catch (Exception ex)
+			{
+				throw ex;
+			}
+		}
+
+		/*
+		 * Preuzima rekorde iz baze
+		 * 	id - broj rekorda, ili null za sve
+		 */
+		public List<Rekord> PreuzmiRekorde(int? br)
+		{
+			List <Rekord> rekordi = new List<Rekord> ();
+			DataSet ds = new DataSet ();
+			DataRow[] rows;
+			string query = "SELECT * FROM rekordi ORDER BY broj_pogresnih_slova+broj_sekundi ASC";
+
+			try
+			{
 				cmd = new MySqlCommand (query, conn);
-				adapter.SelectCommand = cmd;
-				adapter.Fill (ds, "rekordi");
-				rows = ds.Tables["rekordi"].Select();
+				dataAdapter.SelectCommand = cmd;
+				dataAdapter.Fill (ds, "rekordi");
+				rows = ds.Tables["rekordi"].Select ();
 
 				if (br == null || br > ds.Tables["rekordi"].Rows.Count)
-					max = ds.Tables["rekordi"].Rows.Count;
-				else
-					max = (int) br;
+					br = rows.Length;
 
-				for(i = 0; i < max; i++)
-				{
+				for(int i = 0; i < br; i++)
 					rekordi.Add(new Rekord(
-						int.Parse(rows[i]["id"].ToString()),
-						int.Parse(rows[i]["broj_pogresnih_slova"].ToString()),
-						long.Parse(rows[i]["broj_sekundi"].ToString()),
-						rows[i]["ime_korisnika"].ToString()));
-				}
-			} catch (MySqlException ex)
+						int.Parse(rows[i]["id"].ToString ()),
+						int.Parse(rows[i]["broj_pogresnih_slova"].ToString ()),
+						int.Parse(rows[i]["broj_sekundi"].ToString ()),
+						rows[i]["ime_korisnika"].ToString ()));
+				
+				return rekordi;
+			} catch (Exception ex)
 			{
-				Console.WriteLine (ex);
-			} finally
-			{
-				//ds.Dispose ();
-				adapter.Dispose ();
-				cmd.Dispose ();
-				conn.Close ();
-				//conn.Dispose ();
+				throw ex;
 			}
+		}
 
-			return rekordi;
+		/*
+		 * Dispose
+		 */
+		public void Dispose ()
+		{
+			Dispose (true);
+			GC.SuppressFinalize (this);
+		}
+
+		/*
+		 * Oslobadja memoriju
+		 */
+
+		protected virtual void Dispose (bool disposing)
+		{
+			if (disposing)
+			{
+				if (dataAdapter != null)
+					dataAdapter.Dispose ();
+				if (cmd != null)
+					cmd.Dispose ();
+				if (conn != null)
+					conn.Dispose ();
+			}
 		}
 	}
 }

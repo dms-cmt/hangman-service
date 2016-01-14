@@ -17,13 +17,13 @@ namespace HangmanService
 		 */
 
 		/**
-		 * Metoda vraca listu Rekordas <br\>
-		 * prima jedan argument koji predstavlja broj <br\>
-		 * rekorda koje treba preuzeti, ako je null <br\>
+		 * Metoda vraca listu Rekordas \n
+		 * prima jedan argument koji predstavlja broj \n
+		 * rekorda koje treba preuzeti, ako je null \n
 		 * vraca sve rekorde
 		 */
 		[OperationContract]
-		List<Rekord> preuzmiRekorde(int? br);
+		List<Rekord> PreuzmiRekorde(int? br);
 	}
 }
 
