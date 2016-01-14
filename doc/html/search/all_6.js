@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['rekord',['Rekord',['../classHangman_1_1Rekord.html',1,'Hangman']]],
-  ['rekord',['Rekord',['../classHangman_1_1Rekord.html#a55aae169dd356e2b4809cb3372b550b1',1,'Hangman::Rekord']]]
+  ['naziv',['Naziv',['../classHangman_1_1Naziv.html',1,'Hangman']]],
+  ['naziv',['Naziv',['../classHangman_1_1Naziv.html#a07534b3dd429d85a3afc2cf229a14bb3',1,'Hangman::Naziv']]]
 ];

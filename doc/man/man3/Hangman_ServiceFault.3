@@ -1,0 +1,44 @@
+.TH "Hangman.ServiceFault" 3 "Thu Jan 14 2016" "Version 1.0" "hangman-service" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Hangman.ServiceFault \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Javni članovi"
+
+.in +1c
+.ti -1c
+.RI "\fBServiceFault\fP (string errorMessage, string errorDetail)"
+.br
+.in -1c
+.SS "Osobine"
+
+.in +1c
+.ti -1c
+.RI "string \fBErrorMessage\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "string \fBErrorDetail\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Opširniji opis"
+.PP 
+\fBServiceFault\fP 
+.br
+ Predstavlja klasu koja se salje kao fault exception klijentu 
+.SH "Dokumentacija konstruktora i destruktora"
+.PP 
+.SS "Hangman\&.ServiceFault\&.ServiceFault (string errorMessage, string errorDetail)\fC [inline]\fP"
+Prima dva argumenta: errorMeesage - poruka o gresci errorDetail - detalji o gresci 
+.SH "Dokumentacija osobina"
+.PP 
+.SS "string Hangman\&.ServiceFault\&.ErrorDetail\fC [get]\fP"
+Detalji o gresci 
+.SS "string Hangman\&.ServiceFault\&.ErrorMessage\fC [get]\fP"
+Poruka o gresci 
+
+.SH "Autor"
+.PP 
+Napravljeno automatski korišćenjem alata Doxygen za projekat hangman-service od izvornog koda\&.
