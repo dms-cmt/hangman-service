@@ -2,6 +2,7 @@ using System;
 using System.ServiceModel;
 using System.Collections.Generic;
 using System.ServiceModel.Channels;
+using System.ServiceModel.Description;
 using Hangman;
 
 namespace HangmanService
