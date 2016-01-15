@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using System.Data;
+using System.Configuration;
 
 namespace Hangman
 {
@@ -11,12 +12,14 @@ namespace Hangman
 		 * Global variables
 		 */
 
+		/*
 		private static readonly string connectionString = "" +
 			"Server=localhost;" +
 			"Database=hangman;" +
 			"User ID=cmt;" +
 			"Password=cmt2#;" +
 			"Pooling=false;";
+		*/
 
 		private MySqlConnection conn = null;
 		private MySqlCommand cmd = null;
@@ -33,6 +36,7 @@ namespace Hangman
 		{
 			try
 			{
+				string connectionString = ConfigurationSettings.AppSettings["connectionString"];
 				conn = new MySqlConnection (connectionString);
 				conn.Open ();
 				dataAdapter = new MySqlDataAdapter ();
