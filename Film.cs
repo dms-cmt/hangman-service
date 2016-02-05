@@ -8,14 +8,14 @@ namespace Hangman
 	 * 	Klasa predstavlja jedan red iz tabele naziv
 	 */
 	[DataContract]
-	public class Naziv
+	public class Film
 	{
 		/*
 		 * Globalne promenjive
 		 */
 
 		private int? id;
-		private String title;
+		private String naziv;
 
 		/*
 		 * Polja
@@ -39,10 +39,10 @@ namespace Hangman
 		 * 	omoguceno je citanje i pisanje
 		 */
 		[DataMember]
-		public String Title
+		public String Naziv
 		{
-			get { return title; }
-			set { title = value; }
+			get { return naziv; }
+			set { naziv = value; }
 		}
 
 		/*
@@ -54,10 +54,10 @@ namespace Hangman
 		 * 	id - id naziva iz baze ili NULL <br\>
 		 * 	title - naziv filma
 		 */
-		public Naziv (int? id, String title)
+		public Film (int? id, String naziv)
 		{
 			Id = id;
-			Title = title;
+			Naziv = naziv;
 		}
 
 		/*

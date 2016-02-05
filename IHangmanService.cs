@@ -34,6 +34,14 @@ namespace HangmanService
 		[OperationContract]
 		[FaultContract(typeof(ServiceFault))]
 		List<Rekord> PreuzmiRekorde (int? br);
+
+		/**
+		 * Metoda dodaje rekord u bazu \n
+		 * 	ime - ime korisnika koji je resavao sudoku
+		 */
+		[OperationContract]
+		[FaultContract(typeof(ServiceFault))]
+		void SnimiRekord(String ime);
 	}
 }
 

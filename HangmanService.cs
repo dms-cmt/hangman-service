@@ -63,7 +63,7 @@ namespace HangmanService
 		 */
 
 		/**
-		 * Metoda vraca listu Rekordas \n
+		 * Metoda vraca listu Rekorda \n
 		 * 	id - broj rekorda za preuzimanje,
 		 *		ako je null vraca sve rekorde
 		 */
@@ -77,6 +77,14 @@ namespace HangmanService
 			}
 
 			return rekordi;
+		}
+
+		/**
+		 * Metoda dodaje rekord u bazu \n
+		 * 	ime - ime korisnika koji je resavao sudoku
+		 */
+		public void SnimiRekord(String ime)
+		{
 		}
 	}
 }
