@@ -13,6 +13,14 @@ namespace HangmanService
 		 * Igra
 		 */
 
+		/**
+		 * Metoda koja pokrece igru \n
+		 * 	sve setuje na nulu i pokrece tajmer
+		 */
+		[OperationContract]
+		[FaultContract(typeof(ServiceFault))]
+		int PokreniIgru ();
+
 		/*
 		 * Rekordi
 		 */
@@ -25,7 +33,7 @@ namespace HangmanService
 		 */
 		[OperationContract]
 		[FaultContract(typeof(ServiceFault))]
-		List<Rekord> PreuzmiRekorde(int? br);
+		List<Rekord> PreuzmiRekorde (int? br);
 	}
 }
 

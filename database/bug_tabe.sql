@@ -28,9 +28,10 @@ CREATE TABLE IF NOT EXISTS bugs
     id int NOT NULL AUTO_INCREMENT,
     opis varchar(255) NULL,
     otkrio_korisnik varchar(50) NULL,
-    datum_otrivanja date NULL,
+    datum_otkrivanja date NULL,
     popravio_korisnik varchar(50) NULL,
     datum_popravke date NULL,
+    bug tinyint(1) NOT NULL DEFAULT 0,
     PRIMARY KEY(id)
 ) DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
