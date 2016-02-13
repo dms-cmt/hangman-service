@@ -42,9 +42,9 @@ namespace HangmanService
 			helth = MAX_HELTH;
 			time = 0;
 
-			timer.Elapsed += ElapsedEventHandler (TimerTick);
+			//timer.Elapsed += ElapsedEventHandler (TimerTick);
 			timer.Interval = 1000;
-			timer.Enabled = true;
+			//timer.Enabled = true;
 
 			return 0;		// ToDo: Vraca broj slova
 		}
@@ -67,10 +67,10 @@ namespace HangmanService
 		 * 	id - broj rekorda za preuzimanje,
 		 *		ako je null vraca sve rekorde
 		 */
-		public List<Rekord> PreuzmiRekorde(int? br)
+		public List<Rekord> PreuzmiRekorde (int? br = null)
 		{
 			List<Rekord> rekordi;
-			using (Data data = new Data ())
+			using (DataBase data = new DataBase ())
 			{
 				data.Open ();
 				rekordi = data.PreuzmiRekorde (br);
@@ -83,7 +83,7 @@ namespace HangmanService
 		 * Metoda dodaje rekord u bazu \n
 		 * 	ime - ime korisnika koji je resavao sudoku
 		 */
-		public void SnimiRekord(String ime)
+		public void SnimiRekord (String ime)
 		{
 		}
 	}

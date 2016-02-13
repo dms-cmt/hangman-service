@@ -6,7 +6,7 @@ using System.Configuration;
 
 namespace Hangman
 {
-	public class Data : IDisposable
+	public class DataBase : IDisposable
 	{
 		/*
 		 * Global variables
@@ -22,7 +22,6 @@ namespace Hangman
 		*/
 
 		private MySqlConnection conn = null;
-		private MySqlCommand cmd = null;
 		private MySqlDataAdapter dataAdapter = null;
 
 		/*
@@ -48,11 +47,12 @@ namespace Hangman
 
 		/*
 		 * Preuzima rekorde iz baze
-		 * 	id - broj rekorda, ili null za sve
+		 * 	br - broj rekorda, ili null za sve
 		 */
 		public List<Rekord> PreuzmiRekorde(int? br)
 		{
 			List <Rekord> rekordi = new List<Rekord> ();
+			MySqlCommand cmd = null;
 			DataSet ds = new DataSet ();
 			DataRow[] rows;
 			string query = "SELECT * FROM rekordi ORDER BY broj_pogresnih_slova+broj_sekundi ASC";
@@ -78,7 +78,70 @@ namespace Hangman
 			} catch (Exception ex)
 			{
 				throw ex;
+			} finally
+			{
+				if(cmd != null)
+					cmd.Dispose ();
 			}
+		}
+
+		/*
+		 * Peuzima film iz baze
+		 * 	rb - redni broj pitanja
+		 */
+		public Film PreuzmiFilm(int rb)
+		{
+			Film film = null;
+			MySqlCommand cmd = null;
+			DataSet ds = new DataSet ();
+			DataRow[] rows;
+			string query = "SELECT * FROM nazivi";
+
+			try
+			{
+				cmd = new MySqlCommand (query, conn);
+				dataAdapter.SelectCommand = cmd;
+				dataAdapter.Fill (ds, "nazivi");
+				rows = ds.Tables["nazivi"].Select ();
+				if(ds.Tables["nazivi"].Rows.Count < rb + 1)
+					throw new IndexOutOfRangeException();
+				film = new Film(int.Parse(rows[rb]["id"].ToString()),
+								rows[rb]["naziv"].ToString());
+			} catch (Exception ex)
+			{
+				throw ex;
+			} finally
+			{
+				if(cmd != null)
+					cmd.Dispose ();
+			}
+
+			return film;
+		}
+
+		/*
+		 * Vraca broj filmova
+		 */
+		public int BrojFilmova()
+		{
+			string query = "SELECT COUNT(*) FROM nazivi";
+			MySqlCommand cmd = null;
+			int count = 0;
+
+			try
+			{
+				cmd = new MySqlCommand (query, conn);
+				count = (int)cmd.ExecuteScalar ();
+			} catch (Exception ex)
+			{
+				throw ex;
+			} finally
+			{
+				if(cmd != null)
+					cmd.Dispose ();
+			}
+
+			return count;
 		}
 
 		/*
@@ -98,11 +161,9 @@ namespace Hangman
 		{
 			if (disposing)
 			{
-				if (dataAdapter != null)
+				if(dataAdapter != null)
 					dataAdapter.Dispose ();
-				if (cmd != null)
-					cmd.Dispose ();
-				if (conn != null)
+				if(conn != null)
 					conn.Dispose ();
 			}
 		}

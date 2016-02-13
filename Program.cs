@@ -19,6 +19,7 @@ namespace HangmanService
 				Console.ReadKey ();
 				host.Close ();
 			}
+
 			return 0;
 		}
 	}

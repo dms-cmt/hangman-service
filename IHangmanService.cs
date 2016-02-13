@@ -33,7 +33,7 @@ namespace HangmanService
 		 */
 		[OperationContract]
 		[FaultContract(typeof(ServiceFault))]
-		List<Rekord> PreuzmiRekorde (int? br);
+		List<Rekord> PreuzmiRekorde (int? br = null);
 
 		/**
 		 * Metoda dodaje rekord u bazu \n
