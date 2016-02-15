@@ -85,7 +85,8 @@ namespace HangmanService
 		/**
 		 * Metoda vraca listu Rekorda \n
 		 * 	id - broj rekorda za preuzimanje,
-		 *		ako je null vraca sve rekorde
+		 *		ako je null vraca sve rekorde,
+		 *		default vrednost je null
 		 */
 		public List<Rekord> PreuzmiRekorde (int? br = null)
 		{
