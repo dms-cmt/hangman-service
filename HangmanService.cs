@@ -20,6 +20,7 @@ namespace HangmanService
 		private int helth;
 		private int time;
 		private Timer timer;
+		private Film film = null;
 
 		/*
 		 * Konstruktori
@@ -42,11 +43,30 @@ namespace HangmanService
 			helth = MAX_HELTH;
 			time = 0;
 
-			//timer.Elapsed += ElapsedEventHandler (TimerTick);
-			timer.Interval = 1000;
-			//timer.Enabled = true;
+			using (DataBase data = new DataBase ())
+			{
+				int brojFilmova;
+				int rbFilma;
+				Random random;
 
-			return 0;		// ToDo: Vraca broj slova
+				data.Open ();
+
+				brojFilmova = data.BrojFilmova;
+				rbFilma = random.Next (brojFilmova - 1);
+				try
+				{
+					film = data.PreuzmiFilm (rbFilma);
+				} catch (Exception ex)
+				{
+					return -1;
+				}
+			}
+
+			timer.Elapsed += ElapsedEventHandler (TimerTick);
+			timer.Interval = 1000;
+			timer.Enabled = true;
+
+			return film.Naziv.Length;
 		}
 
 		/*
