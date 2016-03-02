@@ -47,12 +47,12 @@ namespace HangmanService
 			{
 				int brojFilmova;
 				int rbFilma;
-				Random random;
+				Random random = new Random ();
 
 				data.Open ();
 
-				brojFilmova = data.BrojFilmova;
-				rbFilma = random.Next (brojFilmova - 1);
+				brojFilmova = data.BrojFilmova();
+				rbFilma = random.Next (brojFilmova);
 				try
 				{
 					film = data.PreuzmiFilm (rbFilma);
@@ -62,9 +62,9 @@ namespace HangmanService
 				}
 			}
 
-			timer.Elapsed += ElapsedEventHandler (TimerTick);
+			//timer.Elapsed += ElapsedEventHandler (TimerTick);
 			timer.Interval = 1000;
-			timer.Enabled = true;
+			//timer.Enabled = true;
 
 			return film.Naziv.Length;
 		}
