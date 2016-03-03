@@ -3,6 +3,8 @@ using System.ServiceModel;
 using System.Collections.Generic;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
+using Mono.Unix;
+using Mono.Unix.Native;
 using Hangman;
 
 namespace HangmanService
@@ -17,6 +19,27 @@ namespace HangmanService
 
 				Console.WriteLine ("Type [CR] to stop ...");
 				Console.ReadKey ();
+
+				/* Demon */
+				/*
+				UnixSignal [] signals = new UnixSignal[]
+					{
+						new UnixSignal (Signum.SIGINT),
+						new UnixSignal(Signum.SIGTERM)
+					};
+
+				bool exit = false;
+				while (!exit)
+				{
+					int id = UnixSignal.WaitAny (signals);
+
+					if (id >= 0 && id < signals.Length)
+					if (signals [id].IsSet)
+						exit = true;
+				}
+				*/
+				/* Domon */
+
 				host.Close ();
 			}
 
