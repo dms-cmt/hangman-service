@@ -34,8 +34,8 @@ namespace HangmanService
 					int id = UnixSignal.WaitAny (signals);
 
 					if (id >= 0 && id < signals.Length)
-					if (signals [id].IsSet)
-						exit = true;
+						if (signals [id].IsSet)
+							exit = true;
 				}
 				*/
 				/* Domon */
