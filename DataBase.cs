@@ -35,7 +35,7 @@ namespace Hangman
 		{
 			try
 			{
-				string connectionString = ConfigurationSettings.AppSettings["connectionString"];
+				string connectionString = ConfigurationManager.AppSettings["connectionString"];
 				conn = new MySqlConnection (connectionString);
 				conn.Open ();
 				dataAdapter = new MySqlDataAdapter ();
