@@ -15,6 +15,11 @@ namespace HangmanService
 		{
 			using (ServiceHost host = new ServiceHost (typeof (HangmanService)))
 			{
+				host.AddServiceEndpoint (
+					typeof(IHangmanService),
+					new BasicHttpBinding (),
+					"http://localhost:8325/");
+
 				host.Open ();
 
 				Console.WriteLine ("Type [CR] to stop ...");
