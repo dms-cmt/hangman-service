@@ -21,6 +21,14 @@ namespace HangmanService
 		[FaultContract(typeof(ServiceFault))]
 		int PokreniIgru ();
 
+		/**
+		 * Metoda koja proverava da li se
+		 * 	zadato slovo nalazi u imenu filma
+		 */
+		[OperationContract]
+		[FaultContract(typeof(ServiceFault))]
+		int[] Provera (char slovo);
+
 		/*
 		 * Rekordi
 		 */

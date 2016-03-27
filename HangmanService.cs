@@ -78,6 +78,15 @@ namespace HangmanService
 			time++;
 		}
 
+		/**
+		 * Metoda koja proverava da li se
+		 * 	zadato slovo nalazi u imenu filma
+		 */
+		public int[] Provera (char slovo)
+		{
+			return null;
+		}
+
 		/*
 		 * Rekordi
 		 */
