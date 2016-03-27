@@ -15,9 +15,10 @@ namespace HangmanService
 		{
 			using (ServiceHost host = new ServiceHost (typeof (HangmanService)))
 			{
+				var security = new SecurityMode ();
 				host.AddServiceEndpoint (
 					typeof(IHangmanService),
-					new BasicHttpBinding (),
+					new WSHttpBinding (security, true),
 					"http://localhost:8325/");
 
 				host.Open ();
