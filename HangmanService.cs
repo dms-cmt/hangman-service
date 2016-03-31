@@ -19,8 +19,8 @@ namespace HangmanService
 
 		private int helth;
 		private int time;
-		private Timer timer;
 		private Film film = null;
+		DateTime vreme;
 
 		/*
 		 * Konstruktori
@@ -62,20 +62,9 @@ namespace HangmanService
 				}
 			}
 
-			//timer.Elapsed += ElapsedEventHandler (TimerTick);
-			timer.Interval = 1000;
-			//timer.Enabled = true;
+			vreme = DateTime.Now;
 
 			return film.Naziv.Length;
-		}
-
-		/*
-		 * Privatni TimerTick handler
-		 * koristi se za brojanje sekundi
-		 */
-		private void TimerTick (object source, ElapsedEventArgs e)
-		{
-			time++;
 		}
 
 		/**
