@@ -1,24 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Timers;
+using System.ServiceModel;
+
 using Hangman;
 
 namespace HangmanService
 {
+	[ServiceBehavior (InstanceContextMode = InstanceContextMode.PerSession)]
 	public class HangmanService : IHangmanService
 	{
 		/*
 		 * Konstante
 		 */
 
-		public static readonly int MAX_HELTH		= 6;	// Maksimalan broj zvota
+		public static readonly int MAX_ZIVOT		= 6;	// Maksimalan broj zvota
 
 		/*
 		 * Globalne promenjive
 		 */
 
-		private int helth;
-		private int time;
+		private int zivot;
 		private Film film = null;
 		DateTime vremeStart;
 		int brojSlova;
@@ -41,8 +43,9 @@ namespace HangmanService
 		 */
 		public int PokreniIgru ()
 		{
-			helth = MAX_HELTH;
-			time = 0;
+			zivot = MAX_ZIVOT;
+			vremeStart = DateTime.Now;
+			brojSlova = 0;
 
 			using (DataBase data = new DataBase ())
 			{
@@ -63,9 +66,6 @@ namespace HangmanService
 				}
 			}
 
-			vremeStart = DateTime.Now;
-			brojSlova = 0;
-
 			return film.Naziv.Length;
 		}
 
@@ -75,7 +75,6 @@ namespace HangmanService
 		 */
 		public int[] Provera (char slovo)
 		{
-			brojSlova++;
 			return null;
 		}
 
