@@ -20,7 +20,8 @@ namespace HangmanService
 		private int helth;
 		private int time;
 		private Film film = null;
-		DateTime vreme;
+		DateTime vremeStart;
+		int brojSlova;
 
 		/*
 		 * Konstruktori
@@ -62,7 +63,8 @@ namespace HangmanService
 				}
 			}
 
-			vreme = DateTime.Now;
+			vremeStart = DateTime.Now;
+			brojSlova = 0;
 
 			return film.Naziv.Length;
 		}
@@ -73,6 +75,7 @@ namespace HangmanService
 		 */
 		public int[] Provera (char slovo)
 		{
+			brojSlova++;
 			return null;
 		}
 
@@ -104,6 +107,17 @@ namespace HangmanService
 		 */
 		public void SnimiRekord (String ime)
 		{
+			TimeSpan ukupnoVreme;
+			DateTime vremeEnd = DateTime.Now;
+			ukupnoVreme = DateTime.Now - vremeStart;
+			int vreme = ukupnoVreme.Seconds +			// Pretvara vreme u sekunde
+				ukupnoVreme.Minutes * 60 +
+				ukupnoVreme.Hours * 3600;
+			using (DataBase data = new DataBase ())
+			{
+				data.Open ();
+				data.NoviRekord (ime, brojSlova, vreme);
+			}
 		}
 	}
 }
