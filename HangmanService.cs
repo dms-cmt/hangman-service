@@ -22,8 +22,8 @@ namespace HangmanService
 
 		private int zivot;
 		private Film film = null;
-		DateTime vremeStart;
-		int brojSlova;
+		private DateTime vremeStart;
+		private int brojSlova;
 
 		/*
 		 * Konstruktori
