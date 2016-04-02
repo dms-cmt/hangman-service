@@ -27,7 +27,7 @@ namespace HangmanService
 		 */
 		[OperationContract]
 		[FaultContract(typeof(ServiceFault))]
-		int[] Provera (char slovo);
+		List<int> Provera (char slovo);
 
 		/*
 		 * Rekordi

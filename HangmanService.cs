@@ -73,9 +73,20 @@ namespace HangmanService
 		 * Metoda koja proverava da li se
 		 * 	zadato slovo nalazi u imenu filma
 		 */
-		public int[] Provera (char slovo)
+		public List<int> Provera (char slovo)
 		{
-			return null;
+			List<int> result = new List<int> ();
+			String rec = film.Naziv;
+			int index;
+
+			index = rec.IndexOf (slovo);
+			while (index >= 0)
+			{
+				result.Add (index);
+				index = rec.IndexOf (slovo, index);
+			}
+
+			return result;
 		}
 
 		/*
