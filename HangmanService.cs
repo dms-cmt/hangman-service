@@ -89,6 +89,14 @@ namespace HangmanService
 			return result;
 		}
 
+		/**
+		 * Metoda koja vraca broj preostalih zivota
+		 */
+		int BrojZivota ()
+		{
+			return zivot;
+		}
+
 		/*
 		 * Rekordi
 		 */

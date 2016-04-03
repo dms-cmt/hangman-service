@@ -23,11 +23,20 @@ namespace HangmanService
 
 		/**
 		 * Metoda koja proverava da li se
-		 * 	zadato slovo nalazi u imenu filma
+		 * 	zadato slovo nalazi u imenu filma \n
+		 * 	vraca listu indexa na kojima se nalazi slovo,
+		 * 	a ako slova nema, praznu listu
 		 */
 		[OperationContract]
 		[FaultContract(typeof(ServiceFault))]
 		List<int> Provera (char slovo);
+
+		/**
+		 * Metoda koja vraca broj preostalih zivota
+		 */
+		[OperationContract]
+		[FaultContract(typeof(ServiceFault))]
+		int BrojZivota ();
 
 		/*
 		 * Rekordi
