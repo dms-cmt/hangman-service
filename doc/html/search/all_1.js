@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['data',['Data',['../classHangman_1_1Data.html',1,'Hangman']]]
+  ['database',['DataBase',['../classHangman_1_1DataBase.html',1,'Hangman']]]
 ];

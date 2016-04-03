@@ -38,9 +38,11 @@ namespace HangmanService
 		 */
 
 		/**
-		 * Metoda koja pokrece igru \n
-		 * 	sve setuje na nulu i pokrece tajmer
-		 */
+		* Metoda koja pokrece igru \n
+		* 	sve setuje na nulu i snima trenutno
+		*	vreme
+		*	na serveru
+		*/
 		public int PokreniIgru ()
 		{
 			zivot = MAX_ZIVOT;
@@ -71,7 +73,9 @@ namespace HangmanService
 
 		/**
 		 * Metoda koja proverava da li se
-		 * 	zadato slovo nalazi u imenu filma
+		 * 	zadato slovo nalazi u imenu filma \n
+		 * 	vraca listu indexa na kojima se nalazi slovo,
+		 * 	a ako slova nema, praznu listu
 		 */
 		public List<int> Provera (char slovo)
 		{

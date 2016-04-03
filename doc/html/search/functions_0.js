@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['naziv',['Naziv',['../classHangman_1_1Naziv.html#a07534b3dd429d85a3afc2cf229a14bb3',1,'Hangman::Naziv']]]
+  ['brojzivota',['BrojZivota',['../interfaceHangmanService_1_1IHangmanService.html#aab289f914b1aa2562ec48860b3c285a8',1,'HangmanService::IHangmanService']]]
 ];

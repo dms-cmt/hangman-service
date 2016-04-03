@@ -103,11 +103,54 @@ Dijagram nasleđivanja za klasu HangmanService.IHangmanService:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Javni članovi</h2></td></tr>
-<tr class="memitem:a4b5fed0f9194868549b43738945dbad8"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classHangman_1_1Rekord.html">Rekord</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceHangmanService_1_1IHangmanService.html#a4b5fed0f9194868549b43738945dbad8">PreuzmiRekorde</a> (int?br)</td></tr>
-<tr class="separator:a4b5fed0f9194868549b43738945dbad8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add2a902c5d5c6308550e7d98fc196928"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceHangmanService_1_1IHangmanService.html#add2a902c5d5c6308550e7d98fc196928">PokreniIgru</a> ()</td></tr>
+<tr class="separator:add2a902c5d5c6308550e7d98fc196928"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a545371a155d7939c01240c70353d7a70"><td class="memItemLeft" align="right" valign="top">List&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceHangmanService_1_1IHangmanService.html#a545371a155d7939c01240c70353d7a70">Provera</a> (char slovo)</td></tr>
+<tr class="separator:a545371a155d7939c01240c70353d7a70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab289f914b1aa2562ec48860b3c285a8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceHangmanService_1_1IHangmanService.html#aab289f914b1aa2562ec48860b3c285a8">BrojZivota</a> ()</td></tr>
+<tr class="separator:aab289f914b1aa2562ec48860b3c285a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a9bf5181cf96c446653fb94991d8f4f"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classHangman_1_1Rekord.html">Rekord</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceHangmanService_1_1IHangmanService.html#a5a9bf5181cf96c446653fb94991d8f4f">PreuzmiRekorde</a> (int?br=null)</td></tr>
+<tr class="separator:a5a9bf5181cf96c446653fb94991d8f4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21580f0656289f72a538a2a664b0a1ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interfaceHangmanService_1_1IHangmanService.html#a21580f0656289f72a538a2a664b0a1ae">SnimiRekord</a> (String ime)</td></tr>
+<tr class="separator:a21580f0656289f72a538a2a664b0a1ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Dokumentacija funkcija članica</h2>
-<a class="anchor" id="a4b5fed0f9194868549b43738945dbad8"></a>
+<a class="anchor" id="aab289f914b1aa2562ec48860b3c285a8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int HangmanService.IHangmanService.BrojZivota </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Metoda koja vraca broj preostalih zivota </p>
+
+</div>
+</div>
+<a class="anchor" id="add2a902c5d5c6308550e7d98fc196928"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int HangmanService.IHangmanService.PokreniIgru </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Metoda koja pokrece igru <br />
+ sve setuje na nulu i snima trenutno vreme na serveru </p>
+
+<p>Definicija u </p>
+
+</div>
+</div>
+<a class="anchor" id="a5a9bf5181cf96c446653fb94991d8f4f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -115,15 +158,54 @@ Javni članovi</h2></td></tr>
           <td class="memname">List&lt;<a class="el" href="classHangman_1_1Rekord.html">Rekord</a>&gt; HangmanService.IHangmanService.PreuzmiRekorde </td>
           <td>(</td>
           <td class="paramtype">int?&#160;</td>
-          <td class="paramname"><em>br</em></td><td>)</td>
+          <td class="paramname"><em>br</em> = <code>null</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Metoda vraca listu Rekordas <br />
 prima jedan argument koji predstavlja broj <br />
-rekorda koje treba preuzeti, ako je null <br />
-vraca sve rekorde </p>
+rekorda koje treba preuzeti, ako je null (default) vraca sve rekorde </p>
+
+<p>Definicija u </p>
+
+</div>
+</div>
+<a class="anchor" id="a545371a155d7939c01240c70353d7a70"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;int&gt; HangmanService.IHangmanService.Provera </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>slovo</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Metoda koja proverava da li se zadato slovo nalazi u imenu filma <br />
+ vraca listu indexa na kojima se nalazi slovo, a ako slova nema, praznu listu </p>
+
+<p>Definicija u </p>
+
+</div>
+</div>
+<a class="anchor" id="a21580f0656289f72a538a2a664b0a1ae"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HangmanService.IHangmanService.SnimiRekord </td>
+          <td>(</td>
+          <td class="paramtype">String&#160;</td>
+          <td class="paramname"><em>ime</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Metoda dodaje rekord u bazu <br />
+ ime - ime korisnika koji je resavao sudoku </p>
 
 <p>Definicija u </p>
 

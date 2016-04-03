@@ -15,7 +15,9 @@ namespace HangmanService
 
 		/**
 		 * Metoda koja pokrece igru \n
-		 * 	sve setuje na nulu i pokrece tajmer
+		 * 	sve setuje na nulu i snima trenutno
+		 *	vreme
+		 *	na serveru
 		 */
 		[OperationContract]
 		[FaultContract(typeof(ServiceFault))]
@@ -45,7 +47,7 @@ namespace HangmanService
 		/**
 		 * Metoda vraca listu Rekordas \n
 		 * prima jedan argument koji predstavlja broj \n
-		 * rekorda koje treba preuzeti, ako je null \n
+		 * rekorda koje treba preuzeti, ako je null (default)
 		 * vraca sve rekorde
 		 */
 		[OperationContract]

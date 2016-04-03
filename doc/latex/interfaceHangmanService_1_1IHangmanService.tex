@@ -7,22 +7,72 @@ Dijagram nasleđivanja za klasu Hangman\+Service.\+I\+Hangman\+Service\+:
 \subsection*{Javni članovi}
 \begin{DoxyCompactItemize}
 \item 
-List$<$ \hyperlink{classHangman_1_1Rekord}{Rekord} $>$ \hyperlink{interfaceHangmanService_1_1IHangmanService_a4b5fed0f9194868549b43738945dbad8}{Preuzmi\+Rekorde} (int?br)
+int \hyperlink{interfaceHangmanService_1_1IHangmanService_add2a902c5d5c6308550e7d98fc196928}{Pokreni\+Igru} ()
+\item 
+List$<$ int $>$ \hyperlink{interfaceHangmanService_1_1IHangmanService_a545371a155d7939c01240c70353d7a70}{Provera} (char slovo)
+\item 
+int \hyperlink{interfaceHangmanService_1_1IHangmanService_aab289f914b1aa2562ec48860b3c285a8}{Broj\+Zivota} ()
+\item 
+List$<$ \hyperlink{classHangman_1_1Rekord}{Rekord} $>$ \hyperlink{interfaceHangmanService_1_1IHangmanService_a5a9bf5181cf96c446653fb94991d8f4f}{Preuzmi\+Rekorde} (int?br=null)
+\item 
+void \hyperlink{interfaceHangmanService_1_1IHangmanService_a21580f0656289f72a538a2a664b0a1ae}{Snimi\+Rekord} (String ime)
 \end{DoxyCompactItemize}
 
 
 \subsection{Dokumentacija funkcija članica}
-\hypertarget{interfaceHangmanService_1_1IHangmanService_a4b5fed0f9194868549b43738945dbad8}{}\index{Hangman\+Service\+::\+I\+Hangman\+Service@{Hangman\+Service\+::\+I\+Hangman\+Service}!Preuzmi\+Rekorde@{Preuzmi\+Rekorde}}
+\hypertarget{interfaceHangmanService_1_1IHangmanService_aab289f914b1aa2562ec48860b3c285a8}{}\index{Hangman\+Service\+::\+I\+Hangman\+Service@{Hangman\+Service\+::\+I\+Hangman\+Service}!Broj\+Zivota@{Broj\+Zivota}}
+\index{Broj\+Zivota@{Broj\+Zivota}!Hangman\+Service\+::\+I\+Hangman\+Service@{Hangman\+Service\+::\+I\+Hangman\+Service}}
+\subsubsection[{Broj\+Zivota}]{\setlength{\rightskip}{0pt plus 5cm}int Hangman\+Service.\+I\+Hangman\+Service.\+Broj\+Zivota (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{interfaceHangmanService_1_1IHangmanService_aab289f914b1aa2562ec48860b3c285a8}
+Metoda koja vraca broj preostalih zivota \hypertarget{interfaceHangmanService_1_1IHangmanService_add2a902c5d5c6308550e7d98fc196928}{}\index{Hangman\+Service\+::\+I\+Hangman\+Service@{Hangman\+Service\+::\+I\+Hangman\+Service}!Pokreni\+Igru@{Pokreni\+Igru}}
+\index{Pokreni\+Igru@{Pokreni\+Igru}!Hangman\+Service\+::\+I\+Hangman\+Service@{Hangman\+Service\+::\+I\+Hangman\+Service}}
+\subsubsection[{Pokreni\+Igru}]{\setlength{\rightskip}{0pt plus 5cm}int Hangman\+Service.\+I\+Hangman\+Service.\+Pokreni\+Igru (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{interfaceHangmanService_1_1IHangmanService_add2a902c5d5c6308550e7d98fc196928}
+Metoda koja pokrece igru ~\newline
+ sve setuje na nulu i snima trenutno vreme na serveru 
+
+Definicija u 
+
+\hypertarget{interfaceHangmanService_1_1IHangmanService_a5a9bf5181cf96c446653fb94991d8f4f}{}\index{Hangman\+Service\+::\+I\+Hangman\+Service@{Hangman\+Service\+::\+I\+Hangman\+Service}!Preuzmi\+Rekorde@{Preuzmi\+Rekorde}}
 \index{Preuzmi\+Rekorde@{Preuzmi\+Rekorde}!Hangman\+Service\+::\+I\+Hangman\+Service@{Hangman\+Service\+::\+I\+Hangman\+Service}}
 \subsubsection[{Preuzmi\+Rekorde}]{\setlength{\rightskip}{0pt plus 5cm}List$<${\bf Rekord}$>$ Hangman\+Service.\+I\+Hangman\+Service.\+Preuzmi\+Rekorde (
 \begin{DoxyParamCaption}
-\item[{int?}]{br}
+\item[{int?}]{br = {\ttfamily null}}
 \end{DoxyParamCaption}
-)}\label{interfaceHangmanService_1_1IHangmanService_a4b5fed0f9194868549b43738945dbad8}
+)}\label{interfaceHangmanService_1_1IHangmanService_a5a9bf5181cf96c446653fb94991d8f4f}
 Metoda vraca listu Rekordas ~\newline
 prima jedan argument koji predstavlja broj ~\newline
-rekorda koje treba preuzeti, ako je null ~\newline
-vraca sve rekorde 
+rekorda koje treba preuzeti, ako je null (default) vraca sve rekorde 
+
+Definicija u 
+
+\hypertarget{interfaceHangmanService_1_1IHangmanService_a545371a155d7939c01240c70353d7a70}{}\index{Hangman\+Service\+::\+I\+Hangman\+Service@{Hangman\+Service\+::\+I\+Hangman\+Service}!Provera@{Provera}}
+\index{Provera@{Provera}!Hangman\+Service\+::\+I\+Hangman\+Service@{Hangman\+Service\+::\+I\+Hangman\+Service}}
+\subsubsection[{Provera}]{\setlength{\rightskip}{0pt plus 5cm}List$<$int$>$ Hangman\+Service.\+I\+Hangman\+Service.\+Provera (
+\begin{DoxyParamCaption}
+\item[{char}]{slovo}
+\end{DoxyParamCaption}
+)}\label{interfaceHangmanService_1_1IHangmanService_a545371a155d7939c01240c70353d7a70}
+Metoda koja proverava da li se zadato slovo nalazi u imenu filma ~\newline
+ vraca listu indexa na kojima se nalazi slovo, a ako slova nema, praznu listu 
+
+Definicija u 
+
+\hypertarget{interfaceHangmanService_1_1IHangmanService_a21580f0656289f72a538a2a664b0a1ae}{}\index{Hangman\+Service\+::\+I\+Hangman\+Service@{Hangman\+Service\+::\+I\+Hangman\+Service}!Snimi\+Rekord@{Snimi\+Rekord}}
+\index{Snimi\+Rekord@{Snimi\+Rekord}!Hangman\+Service\+::\+I\+Hangman\+Service@{Hangman\+Service\+::\+I\+Hangman\+Service}}
+\subsubsection[{Snimi\+Rekord}]{\setlength{\rightskip}{0pt plus 5cm}void Hangman\+Service.\+I\+Hangman\+Service.\+Snimi\+Rekord (
+\begin{DoxyParamCaption}
+\item[{String}]{ime}
+\end{DoxyParamCaption}
+)}\label{interfaceHangmanService_1_1IHangmanService_a21580f0656289f72a538a2a664b0a1ae}
+Metoda dodaje rekord u bazu ~\newline
+ ime -\/ ime korisnika koji je resavao sudoku 
 
 Definicija u 
 

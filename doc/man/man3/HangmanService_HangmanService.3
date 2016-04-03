@@ -1,4 +1,4 @@
-.TH "HangmanService.HangmanService" 3 "Thu Jan 14 2016" "Version 1.0" "hangman-service" \" -*- nroff -*-
+.TH "HangmanService.HangmanService" 3 "Sun Apr 3 2016" "Version 1.0" "hangman-service" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -12,15 +12,46 @@ Spisak osnovnih klasa:
 
 .in +1c
 .ti -1c
-.RI "List< \fBRekord\fP > \fBPreuzmiRekorde\fP (int?br)"
+.RI "int \fBPokreniIgru\fP ()"
+.br
+.ti -1c
+.RI "List< int > \fBProvera\fP (char slovo)"
+.br
+.ti -1c
+.RI "List< \fBRekord\fP > \fBPreuzmiRekorde\fP (int?br=null)"
+.br
+.ti -1c
+.RI "void \fBSnimiRekord\fP (String ime)"
+.br
+.in -1c
+.SS "Zajednički javni članovi"
+
+.in +1c
+.ti -1c
+.RI "static readonly int \fBMAX_ZIVOT\fP = 6"
 .br
 .in -1c
 .SH "Dokumentacija funkcija članica"
 .PP 
-.SS "List<\fBRekord\fP> HangmanService\&.HangmanService\&.PreuzmiRekorde (int? br)\fC [inline]\fP"
-Metoda vraca listu Rekordas 
+.SS "int HangmanService\&.HangmanService\&.PokreniIgru ()\fC [inline]\fP"
+Metoda koja pokrece igru 
 .br
- id - broj rekorda za preuzimanje, ako je null vraca sve rekorde 
+ sve setuje na nulu i snima trenutno vreme na serveru 
+.PP
+.SS "List<\fBRekord\fP> HangmanService\&.HangmanService\&.PreuzmiRekorde (int? br = \fCnull\fP)\fC [inline]\fP"
+Metoda vraca listu Rekorda 
+.br
+ id - broj rekorda za preuzimanje, ako je null vraca sve rekorde, default vrednost je null 
+.PP
+.SS "List<int> HangmanService\&.HangmanService\&.Provera (char slovo)\fC [inline]\fP"
+Metoda koja proverava da li se zadato slovo nalazi u imenu filma 
+.br
+ vraca listu indexa na kojima se nalazi slovo, a ako slova nema, praznu listu 
+.PP
+.SS "void HangmanService\&.HangmanService\&.SnimiRekord (String ime)\fC [inline]\fP"
+Metoda dodaje rekord u bazu 
+.br
+ ime - ime korisnika koji je resavao sudoku 
 .PP
 
 

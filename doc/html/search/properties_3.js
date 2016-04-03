@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['title',['Title',['../classHangman_1_1Naziv.html#aa98229e64e469c9c6add0bb41a1447b0',1,'Hangman::Naziv']]]
+  ['naziv',['Naziv',['../classHangman_1_1Film.html#a0b5bec2ea0b6d1194da990d0705a4664',1,'Hangman::Film']]]
 ];

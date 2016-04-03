@@ -11,20 +11,68 @@ Klasni dijagram za Hangman\+Service.\+Hangman\+Service\+:
 \subsection*{Javni članovi}
 \begin{DoxyCompactItemize}
 \item 
-List$<$ \hyperlink{classHangman_1_1Rekord}{Rekord} $>$ \hyperlink{classHangmanService_1_1HangmanService_a86fbe2324dc95e4b0a44fb0ff86277a8}{Preuzmi\+Rekorde} (int?br)
+int \hyperlink{classHangmanService_1_1HangmanService_aa9fc92b190437b0c4e4e2b7fabe25764}{Pokreni\+Igru} ()
+\item 
+List$<$ int $>$ \hyperlink{classHangmanService_1_1HangmanService_a72901eff26b80977d4ee25f277858ec3}{Provera} (char slovo)
+\item 
+List$<$ \hyperlink{classHangman_1_1Rekord}{Rekord} $>$ \hyperlink{classHangmanService_1_1HangmanService_a8ace42822c4d95d22e7adc7452b39baa}{Preuzmi\+Rekorde} (int?br=null)
+\item 
+void \hyperlink{classHangmanService_1_1HangmanService_a18a21a7d8bf98162cb4b827490b92781}{Snimi\+Rekord} (String ime)
+\end{DoxyCompactItemize}
+\subsection*{Zajednički javni članovi}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classHangmanService_1_1HangmanService_a6bf8f7c7a71c6396215d03fcbd999ec8}{}static readonly int {\bfseries M\+A\+X\+\_\+\+Z\+I\+V\+O\+T} = 6\label{classHangmanService_1_1HangmanService_a6bf8f7c7a71c6396215d03fcbd999ec8}
+
 \end{DoxyCompactItemize}
 
 
 \subsection{Dokumentacija funkcija članica}
-\hypertarget{classHangmanService_1_1HangmanService_a86fbe2324dc95e4b0a44fb0ff86277a8}{}\index{Hangman\+Service\+::\+Hangman\+Service@{Hangman\+Service\+::\+Hangman\+Service}!Preuzmi\+Rekorde@{Preuzmi\+Rekorde}}
+\hypertarget{classHangmanService_1_1HangmanService_aa9fc92b190437b0c4e4e2b7fabe25764}{}\index{Hangman\+Service\+::\+Hangman\+Service@{Hangman\+Service\+::\+Hangman\+Service}!Pokreni\+Igru@{Pokreni\+Igru}}
+\index{Pokreni\+Igru@{Pokreni\+Igru}!Hangman\+Service\+::\+Hangman\+Service@{Hangman\+Service\+::\+Hangman\+Service}}
+\subsubsection[{Pokreni\+Igru}]{\setlength{\rightskip}{0pt plus 5cm}int Hangman\+Service.\+Hangman\+Service.\+Pokreni\+Igru (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classHangmanService_1_1HangmanService_aa9fc92b190437b0c4e4e2b7fabe25764}
+Metoda koja pokrece igru ~\newline
+ sve setuje na nulu i snima trenutno vreme na serveru 
+
+
+
+\hypertarget{classHangmanService_1_1HangmanService_a8ace42822c4d95d22e7adc7452b39baa}{}\index{Hangman\+Service\+::\+Hangman\+Service@{Hangman\+Service\+::\+Hangman\+Service}!Preuzmi\+Rekorde@{Preuzmi\+Rekorde}}
 \index{Preuzmi\+Rekorde@{Preuzmi\+Rekorde}!Hangman\+Service\+::\+Hangman\+Service@{Hangman\+Service\+::\+Hangman\+Service}}
 \subsubsection[{Preuzmi\+Rekorde}]{\setlength{\rightskip}{0pt plus 5cm}List$<${\bf Rekord}$>$ Hangman\+Service.\+Hangman\+Service.\+Preuzmi\+Rekorde (
 \begin{DoxyParamCaption}
-\item[{int?}]{br}
+\item[{int?}]{br = {\ttfamily null}}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}\label{classHangmanService_1_1HangmanService_a86fbe2324dc95e4b0a44fb0ff86277a8}
-Metoda vraca listu Rekordas ~\newline
- id -\/ broj rekorda za preuzimanje, ako je null vraca sve rekorde 
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classHangmanService_1_1HangmanService_a8ace42822c4d95d22e7adc7452b39baa}
+Metoda vraca listu Rekorda ~\newline
+ id -\/ broj rekorda za preuzimanje, ako je null vraca sve rekorde, default vrednost je null 
+
+
+
+\hypertarget{classHangmanService_1_1HangmanService_a72901eff26b80977d4ee25f277858ec3}{}\index{Hangman\+Service\+::\+Hangman\+Service@{Hangman\+Service\+::\+Hangman\+Service}!Provera@{Provera}}
+\index{Provera@{Provera}!Hangman\+Service\+::\+Hangman\+Service@{Hangman\+Service\+::\+Hangman\+Service}}
+\subsubsection[{Provera}]{\setlength{\rightskip}{0pt plus 5cm}List$<$int$>$ Hangman\+Service.\+Hangman\+Service.\+Provera (
+\begin{DoxyParamCaption}
+\item[{char}]{slovo}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classHangmanService_1_1HangmanService_a72901eff26b80977d4ee25f277858ec3}
+Metoda koja proverava da li se zadato slovo nalazi u imenu filma ~\newline
+ vraca listu indexa na kojima se nalazi slovo, a ako slova nema, praznu listu 
+
+
+
+\hypertarget{classHangmanService_1_1HangmanService_a18a21a7d8bf98162cb4b827490b92781}{}\index{Hangman\+Service\+::\+Hangman\+Service@{Hangman\+Service\+::\+Hangman\+Service}!Snimi\+Rekord@{Snimi\+Rekord}}
+\index{Snimi\+Rekord@{Snimi\+Rekord}!Hangman\+Service\+::\+Hangman\+Service@{Hangman\+Service\+::\+Hangman\+Service}}
+\subsubsection[{Snimi\+Rekord}]{\setlength{\rightskip}{0pt plus 5cm}void Hangman\+Service.\+Hangman\+Service.\+Snimi\+Rekord (
+\begin{DoxyParamCaption}
+\item[{String}]{ime}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{classHangmanService_1_1HangmanService_a18a21a7d8bf98162cb4b827490b92781}
+Metoda dodaje rekord u bazu ~\newline
+ ime -\/ ime korisnika koji je resavao sudoku 
 
 
 
