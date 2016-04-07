@@ -21,7 +21,7 @@ namespace HangmanService
 		 */
 
 		private int zivot;
-		private Film film = null;
+		private char[] nazivFilma;
 		private DateTime vremeStart;
 		private int brojSlova;
 
@@ -45,6 +45,7 @@ namespace HangmanService
 		*/
 		public int PokreniIgru ()
 		{
+
 			zivot = MAX_ZIVOT;
 			vremeStart = DateTime.Now;
 			brojSlova = 0;
@@ -53,6 +54,7 @@ namespace HangmanService
 			{
 				int brojFilmova;
 				int rbFilma;
+				Film film;
 				Random random = new Random ();
 
 				data.Open ();
@@ -62,13 +64,14 @@ namespace HangmanService
 				try
 				{
 					film = data.PreuzmiFilm (rbFilma);
+					nazivFilma = film.Naziv.ToCharArray;
 				} catch (Exception ex)
 				{
 					return -1;
 				}
 			}
 
-			return film.Naziv.Length;
+			return nazivFilma.Length;
 		}
 
 		/**
@@ -80,15 +83,11 @@ namespace HangmanService
 		public List<int> Provera (char slovo)
 		{
 			List<int> result = new List<int> ();
-			String rec = film.Naziv;
 			int index;
 
-			index = rec.IndexOf (slovo);
-			while (index >= 0)
-			{
-				result.Add (index);
-				index = rec.IndexOf (slovo, index);
-			}
+			for (index = 0; index < nazivFilma.Length; index++)
+				if (nazivFilma [index] == slovo)
+					result.Add (index);
 
 			return result;
 		}
