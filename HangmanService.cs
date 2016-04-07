@@ -85,9 +85,15 @@ namespace HangmanService
 			List<int> result = new List<int> ();
 			int index;
 
+			if (zivot <= 0)
+				return result;
+
 			for (index = 0; index < nazivFilma.Length; index++)
 				if (nazivFilma [index] == slovo)
 					result.Add (index);
+
+			if (result.Count <= 0)
+				zivot--;
 
 			return result;
 		}
