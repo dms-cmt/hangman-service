@@ -91,29 +91,27 @@ namespace Hangman
 		 */
 		public Film PreuzmiFilm(int rb)
 		{
-			Film film = null;
-			MySqlCommand cmd = null;
+			Film film;
+			MySqlCommand cmd;
 			DataSet ds = new DataSet ();
 			DataRow[] rows;
 			string query = "SELECT * FROM nazivi";
 
-			try
+			using (cmd = new MySqlCommand (query, conn))
 			{
-				cmd = new MySqlCommand (query, conn);
-				dataAdapter.SelectCommand = cmd;
-				dataAdapter.Fill (ds, "nazivi");
-				rows = ds.Tables["nazivi"].Select ();
-				if(ds.Tables["nazivi"].Rows.Count < rb + 1)
-					throw new IndexOutOfRangeException();
-				film = new Film(int.Parse(rows[rb]["id"].ToString()),
-								rows[rb]["naziv"].ToString());
-			} catch (Exception ex)
-			{
-				throw ex;
-			} finally
-			{
-				if(cmd != null)
-					cmd.Dispose ();
+				try
+				{
+					dataAdapter.SelectCommand = cmd;
+					dataAdapter.Fill (ds, "nazivi");
+					rows = ds.Tables["nazivi"].Select ();
+					if(ds.Tables["nazivi"].Rows.Count < rb + 1)
+						throw new IndexOutOfRangeException();
+					film = new Film(int.Parse(rows[rb]["id"].ToString()),
+										 	  rows[rb]["naziv"].ToString());
+				} catch (Exception ex)
+				{
+					throw ex;
+				}
 			}
 
 			return film;
@@ -125,20 +123,19 @@ namespace Hangman
 		public int BrojFilmova()
 		{
 			string query = "SELECT COUNT(*) FROM nazivi";
-			MySqlCommand cmd = null;
+			MySqlCommand cmd;
 			int count = 0;
 
-			try
+			using (cmd = new MySqlCommand (query, conn))
 			{
-				cmd = new MySqlCommand (query, conn);
-				count = (int)cmd.ExecuteScalar ();
-			} catch (Exception ex)
-			{
-				throw ex;
-			} finally
-			{
-				if(cmd != null)
-					cmd.Dispose ();
+				try
+				{
+					cmd = new MySqlCommand (query, conn);
+					count = (int)cmd.ExecuteScalar ();
+				} catch (Exception ex)
+				{
+					throw ex;
+				}
 			}
 
 			return count;
