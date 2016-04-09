@@ -13,7 +13,7 @@ namespace Hangman
 		 */
 
 		/*
-		private static readonly string connectionString = "" +
+		private stati8c readonly string connectionString = "" +
 			"Server=localhost;" +
 			"Database=hangman;" +
 			"User ID=cmt;" +
@@ -57,31 +57,28 @@ namespace Hangman
 			DataRow[] rows;
 			string query = "SELECT * FROM rekordi ORDER BY broj_pogresnih_slova+broj_sekundi ASC";
 
-			try
+			using (cmd = new MySqlCommand (query, conn))
 			{
-				cmd = new MySqlCommand (query, conn);
-				dataAdapter.SelectCommand = cmd;
-				dataAdapter.Fill (ds, "rekordi");
-				rows = ds.Tables["rekordi"].Select ();
+				try
+				{
+					dataAdapter.SelectCommand = cmd;
+					dataAdapter.Fill (ds, "rekordi");
+					rows = ds.Tables ["rekordi"].Select ();
 
-				if (br == null || br > ds.Tables["rekordi"].Rows.Count)
-					br = rows.Length;
+					if (br == null || br > ds.Tables ["rekordi"].Rows.Count)
+						br = rows.Length;
 
-				for(int i = 0; i < br; i++)
-					rekordi.Add(new Rekord(
-						int.Parse(rows[i]["id"].ToString ()),
-						int.Parse(rows[i]["broj_pogresnih_slova"].ToString ()),
-						int.Parse(rows[i]["broj_sekundi"].ToString ()),
-						rows[i]["ime_korisnika"].ToString ()));
+					for (int i = 0; i < br; i++)
+						rekordi.Add (new Rekord (
+							int.Parse (rows [i] ["id"].ToString ()),
+							int.Parse (rows [i] ["broj_pogresnih_slova"].ToString ()),
+							int.Parse (rows [i] ["broj_sekundi"].ToString ()),
+							rows [i] ["ime_korisnika"].ToString ()));
 				
-				return rekordi;
-			} catch (Exception ex)
-			{
-				throw ex;
-			} finally
-			{
-				if(cmd != null)
-					cmd.Dispose ();
+					return rekordi;
+				} catch (Exception ex) {
+					throw ex;
+				}
 			}
 		}
 

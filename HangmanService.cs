@@ -64,7 +64,7 @@ namespace HangmanService
 				try
 				{
 					film = data.PreuzmiFilm (rbFilma);
-					nazivFilma = film.Naziv.ToCharArray;
+					nazivFilma = film.Naziv.ToCharArray ();
 				} catch (Exception ex)
 				{
 					return -1;
@@ -101,7 +101,7 @@ namespace HangmanService
 		/**
 		 * Metoda koja vraca broj preostalih zivota
 		 */
-		int BrojZivota ()
+		public int BrojZivota ()
 		{
 			return zivot;
 		}
