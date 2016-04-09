@@ -22,7 +22,6 @@ namespace Hangman
 		*/
 
 		private MySqlConnection conn = null;
-		private MySqlDataAdapter dataAdapter = null;
 
 		/*
 		 * Pulib methods
@@ -38,7 +37,6 @@ namespace Hangman
 				string connectionString = ConfigurationManager.AppSettings["connectionString"];
 				conn = new MySqlConnection (connectionString);
 				conn.Open ();
-				dataAdapter = new MySqlDataAdapter ();
 			} catch (Exception ex)
 			{
 				throw ex;
@@ -52,34 +50,32 @@ namespace Hangman
 		public List<Rekord> PreuzmiRekorde(int? br)
 		{
 			List <Rekord> rekordi = new List<Rekord> ();
-			MySqlCommand cmd = null;
-			DataSet ds = new DataSet ();
-			DataRow[] rows;
+			MySqlCommand cmd;
+			MySqlDataReader reader;
 			string query = "SELECT * FROM rekordi ORDER BY broj_pogresnih_slova+broj_sekundi ASC";
 
 			using (cmd = new MySqlCommand (query, conn))
 			{
 				try
 				{
-					dataAdapter.SelectCommand = cmd;
-					dataAdapter.Fill (ds, "rekordi");
-					rows = ds.Tables ["rekordi"].Select ();
+					reader = cmd.ExecuteReader ();
 
-					if (br == null || br > ds.Tables ["rekordi"].Rows.Count)
-						br = rows.Length;
-
-					for (int i = 0; i < br; i++)
-						rekordi.Add (new Rekord (
-							int.Parse (rows [i] ["id"].ToString ()),
-							int.Parse (rows [i] ["broj_pogresnih_slova"].ToString ()),
-							int.Parse (rows [i] ["broj_sekundi"].ToString ()),
-							rows [i] ["ime_korisnika"].ToString ()));
-				
-					return rekordi;
-				} catch (Exception ex) {
-					throw ex;
+					while (reader.Read () && br != null ? ++br > 0 : true)
+					{
+						int id = reader.GetInt32 (0);
+						int brojPogresnihSlova = reader.GetInt32 (1);
+						long vreme = reader.GetInt64 (2);
+						string ime = reader.GetString (3);
+						rekordi.Add (new Rekord(id, brojPogresnihSlova,
+												vreme, ime));
+					}
+				} catch (Exception ex)
+				{
+						throw ex;
 				}
 			}
+
+			return rekordi;
 		}
 
 		/*
@@ -90,21 +86,23 @@ namespace Hangman
 		{
 			Film film;
 			MySqlCommand cmd;
-			DataSet ds = new DataSet ();
-			DataRow[] rows;
-			string query = "SELECT * FROM nazivi";
+			MySqlDataReader reader;
+			string query = "SELECT * FROM nazivi WHERE id=" + rb.ToString ();
 
 			using (cmd = new MySqlCommand (query, conn))
 			{
 				try
 				{
-					dataAdapter.SelectCommand = cmd;
-					dataAdapter.Fill (ds, "nazivi");
-					rows = ds.Tables["nazivi"].Select ();
-					if(ds.Tables["nazivi"].Rows.Count < rb + 1)
-						throw new IndexOutOfRangeException();
-					film = new Film(int.Parse(rows[rb]["id"].ToString()),
-										 	  rows[rb]["naziv"].ToString());
+					reader = cmd.ExecuteReader ();
+					if (reader.HasRows)
+					{
+						int id = reader.GetInt32 (0);
+						string naziv = reader.GetString (1);
+						film = new Film (id, naziv);
+					} else
+					{
+						throw new Exception ("Ne postoji film sa tim id-om");
+					}
 				} catch (Exception ex)
 				{
 					throw ex;
@@ -181,8 +179,6 @@ namespace Hangman
 		{
 			if (disposing)
 			{
-				if(dataAdapter != null)
-					dataAdapter.Dispose ();
 				if(conn != null)
 					conn.Dispose ();
 			}
