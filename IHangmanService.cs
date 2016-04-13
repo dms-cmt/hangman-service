@@ -31,7 +31,7 @@ namespace HangmanService
 		 */
 		[OperationContract]
 		[FaultContract(typeof(ServiceFault))]
-		List<int> Provera (char slovo);
+		List<int> Provera (char[] slovo);
 
 		/**
 		 * Metoda koja vraca broj preostalih zivota

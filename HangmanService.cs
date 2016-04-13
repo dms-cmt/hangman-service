@@ -80,7 +80,7 @@ namespace HangmanService
 		 * 	vraca listu indexa na kojima se nalazi slovo,
 		 * 	a ako slova nema, praznu listu
 		 */
-		public List<int> Provera (char slovo)
+		public List<int> Provera (char[] slovo)
 		{
 			List<int> result = new List<int> ();
 			int index;
@@ -89,7 +89,7 @@ namespace HangmanService
 				return result;
 
 			for (index = 0; index < nazivFilma.Length; index++)
-				if (nazivFilma [index] == slovo)
+				if (nazivFilma [index] == slovo[0])
 					result.Add (index);
 
 			if (result.Count <= 0)
