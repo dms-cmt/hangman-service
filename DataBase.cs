@@ -86,26 +86,28 @@ namespace Hangman
 		{
 			Film film;
 			MySqlCommand cmd;
-			MySqlDataReader reader;
-			string query = "SELECT * FROM nazivi WHERE id=" + rb.ToString ();
+			MySqlDataAdapter dataAdapter;
+			DataSet ds = new DataSet ();
+			DataRow[] rows;
+			string query = "SELECT * FROM nazivi";
 
 			using (cmd = new MySqlCommand (query, conn))
 			{
-				try
+				using(dataAdapter = new MySqlDataAdapter ())
 				{
-					reader = cmd.ExecuteReader ();
-					if (reader.HasRows)
+					try
 					{
-						int id = reader.GetInt32 (0);
-						string naziv = reader.GetString (1);
-						film = new Film (id, naziv);
-					} else
+						dataAdapter.SelectCommand = cmd;
+						dataAdapter.Fill (ds, "nazivi");
+						rows = ds.Tables["nazivi"].Select ();
+						if(ds.Tables["nazivi"].Rows.Count < rb + 1)
+							throw new IndexOutOfRangeException();
+						film = new Film(int.Parse(rows[rb]["id"].ToString()),
+							rows[rb]["naziv"].ToString());
+					} catch (Exception ex)
 					{
-						throw new Exception ("Ne postoji film sa tim id-om");
+						throw ex;
 					}
-				} catch (Exception ex)
-				{
-					throw ex;
 				}
 			}
 
