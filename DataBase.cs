@@ -127,8 +127,7 @@ namespace Hangman
 			{
 				try
 				{
-					cmd = new MySqlCommand (query, conn);
-					count = (int)cmd.ExecuteScalar ();
+					count = Int32.Parse(cmd.ExecuteScalar ().ToString ());
 				} catch (Exception ex)
 				{
 					throw ex;

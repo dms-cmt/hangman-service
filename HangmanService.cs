@@ -58,7 +58,7 @@ namespace HangmanService
 				try
 				{
 					data.Open ();
-					brojFilmova = data.BrojFilmova();
+					brojFilmova = data.BrojFilmova ();
 					rbFilma = random.Next (brojFilmova);
 					film = data.PreuzmiFilm (rbFilma);
 					nazivFilma = film.Naziv.ToCharArray ();
