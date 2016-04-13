@@ -55,13 +55,11 @@ namespace HangmanService
 				int rbFilma;
 				Film film;
 				Random random = new Random ();
-
-				data.Open ();
-
-				brojFilmova = data.BrojFilmova();
-				rbFilma = random.Next (brojFilmova);
 				try
 				{
+					data.Open ();
+					brojFilmova = data.BrojFilmova();
+					rbFilma = random.Next (brojFilmova);
 					film = data.PreuzmiFilm (rbFilma);
 					nazivFilma = film.Naziv.ToCharArray ();
 				} catch (Exception ex)
