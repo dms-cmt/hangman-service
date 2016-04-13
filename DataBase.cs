@@ -60,7 +60,7 @@ namespace Hangman
 				{
 					reader = cmd.ExecuteReader ();
 
-					while (reader.Read () && br != null ? ++br > 0 : true)
+					while (reader.Read () && (br != null ? br-- > 0 : true))
 					{
 						int id = reader.GetInt32 (0);
 						int brojPogresnihSlova = reader.GetInt32 (1);
