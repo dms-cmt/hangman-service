@@ -25,3 +25,5 @@ USE hangman;
 INSERT INTO rekordi (broj_pogresnih_slova, broj_sekundi, ime_korisnika) values (10, 100, "Test User 1");
 INSERT INTO rekordi (broj_pogresnih_slova, broj_sekundi, ime_korisnika) values (11, 101, "Test User 2");
 INSERT INTO rekordi (broj_pogresnih_slova, broj_sekundi, ime_korisnika) values (12, 102, "Test User 3");
+
+INSERT INTO nazivi (naziv) VALUE ("Lajanje na zvezde");
