@@ -45,7 +45,6 @@ namespace HangmanService
 		*/
 		public int PokreniIgru ()
 		{
-
 			zivot = MAX_ZIVOT;
 			vremeStart = DateTime.Now;
 			brojSlova = 0;
