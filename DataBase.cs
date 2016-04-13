@@ -121,7 +121,7 @@ namespace Hangman
 		{
 			string query = "SELECT COUNT(*) FROM nazivi";
 			MySqlCommand cmd;
-			int count = 0;
+			int count;
 
 			using (cmd = new MySqlCommand (query, conn))
 			{
