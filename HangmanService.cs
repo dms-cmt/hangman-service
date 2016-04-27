@@ -61,7 +61,7 @@ namespace HangmanService
 					brojFilmova = data.BrojFilmova ();
 					rbFilma = random.Next (brojFilmova);
 					film = data.PreuzmiFilm (rbFilma);
-					nazivFilma = film.Naziv.ToCharArray ();
+					nazivFilma = film.Naziv.ToUpper ().ToCharArray ();
 				} catch (Exception ex)
 				{
 					return -1;
