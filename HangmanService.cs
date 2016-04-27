@@ -14,13 +14,13 @@ namespace HangmanService
 		 * Konstante
 		 */
 
-		public static readonly int MAX_ZIVOT		= 6;	// Maksimalan broj zvota
+		//public static readonly int MAX_ZIVOT		= 6;	// Maksimalan broj zvota
 
 		/*
 		 * Globalne promenjive
 		 */
 
-		private int zivot;
+		private int brojPokusaja;
 		private char[] nazivFilma;
 		private DateTime vremeStart;
 		private int brojSlova;
@@ -45,7 +45,7 @@ namespace HangmanService
 		*/
 		public int PokreniIgru ()
 		{
-			zivot = MAX_ZIVOT;
+			brojPokusaja = 0;
 			vremeStart = DateTime.Now;
 			brojSlova = 0;
 
@@ -82,7 +82,7 @@ namespace HangmanService
 			List<int> result = new List<int> ();
 			int index;
 
-			if (zivot <= 0)
+			if (brojPokusaja >= 6)
 				return result;
 
 			for (index = 0; index < nazivFilma.Length; index++)
@@ -90,7 +90,7 @@ namespace HangmanService
 					result.Add (index);
 
 			if (result.Count <= 0)
-				zivot--;
+				brojPokusaja++;
 
 			return result;
 		}
@@ -98,9 +98,9 @@ namespace HangmanService
 		/**
 		 * Metoda koja vraca broj preostalih zivota
 		 */
-		public int BrojZivota ()
+		public int BrojPokusaja ()
 		{
-			return zivot;
+			return brojPokusaja;
 		}
 
 		/*

@@ -38,7 +38,7 @@ namespace HangmanService
 		 */
 		[OperationContract]
 		[FaultContract(typeof(ServiceFault))]
-		int BrojZivota ();
+		int BrojPokusaja ();
 
 		/*
 		 * Rekordi
