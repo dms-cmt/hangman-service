@@ -23,12 +23,11 @@ namespace HangmanService
 
 				host.Open ();
 
-				/*
 				Console.WriteLine ("Type [CR] to stop ...");
 				Console.ReadKey ();
-				*/
 
-				/* Demon */
+				/*
+				/* Demon
 				UnixSignal [] signals = new UnixSignal[]
 					{
 						new UnixSignal (Signum.SIGINT),
