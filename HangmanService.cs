@@ -43,11 +43,12 @@ namespace HangmanService
 		*	vreme
 		*	na serveru
 		*/
-		public int PokreniIgru ()
+		public int[] PokreniIgru ()
 		{
 			brojPokusaja = 0;
 			vremeStart = DateTime.Now;
 			brojSlova = 0;
+			List<int> result = new List<int> ();
 
 			using (DataBase data = new DataBase ())
 			{
@@ -64,11 +65,15 @@ namespace HangmanService
 					nazivFilma = film.Naziv.ToUpper ().ToCharArray ();
 				} catch (Exception ex)
 				{
-					return -1;
 				}
 			}
 
-			return nazivFilma.Length;
+			result.Add (nazivFilma.Length);
+			for (int i = 0; i < nazivFilma.Length; i++)
+				if (nazivFilma [i] == ' ')
+					result.Add (i);
+
+			return result.ToArray ();
 		}
 
 		/**

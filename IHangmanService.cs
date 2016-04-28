@@ -21,7 +21,7 @@ namespace HangmanService
 		 */
 		[OperationContract]
 		[FaultContract(typeof(ServiceFault))]
-		int PokreniIgru ();
+		int[] PokreniIgru ();
 
 		/**
 		 * Metoda koja proverava da li se
