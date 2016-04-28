@@ -23,11 +23,12 @@ namespace HangmanService
 
 				host.Open ();
 
+				/*
 				Console.WriteLine ("Type [CR] to stop ...");
 				Console.ReadKey ();
+				*/
 
 				/* Demon */
-				/*
 				UnixSignal [] signals = new UnixSignal[]
 					{
 						new UnixSignal (Signum.SIGINT),
@@ -40,10 +41,14 @@ namespace HangmanService
 					int id = UnixSignal.WaitAny (signals);
 
 					if (id >= 0 && id < signals.Length)
+					{
 						if (signals [id].IsSet)
+						{
+							signals [id].Reset ();
 							exit = true;
+						}
+					}
 				}
-				*/
 				/* Domon */
 
 				host.Close ();
