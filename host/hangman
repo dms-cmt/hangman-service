@@ -1,0 +1,47 @@
+#!/bin/bash
+#
+# chkconfig: 35 90 15
+# description: Hangman service
+
+. /lib/lsb/init-functions
+
+# Start service
+start()
+{
+    initlog -c "echo -n Startint Hangman service: "
+    /opt/hangman/hangman-service.exe &
+    touch /var/lock/subsys/hangman
+    success $"Hangman service startup"
+    #echo $"Hangman service startup"
+    echo
+}
+
+# Restart service
+stop()
+{
+    initlog -c "echo -n Stopping Hangman service: "
+    killproc hangman
+    rm -f /var/lock/subsys/hangman
+    echo
+}
+
+# main
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status hangman
+        ;;
+    restart|reload|condrestart)
+        stop
+        start
+        ;;
+    *)
+        echo $"Usage: %0 {start|stop|restart|reload|status}"
+        exit 1
+esac
+exit 0
