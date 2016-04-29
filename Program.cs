@@ -23,15 +23,22 @@ namespace HangmanService
 
 				host.Open ();
 
+				/*
 				Console.WriteLine ("Type [CR] to stop ...");
 				Console.ReadKey ();
+				*/
 
-				/*
-				/* Demon
+				/* Demon */
+				UnixSignal sigint = new UnixSignal (Signum.SIGINT);
+				UnixSignal sigterm = new UnixSignal (Signum.SIGTERM);
+				UnixSignal sighup = new UnixSignal (Signum.SIGHUP);
+				UnixSignal sigusr2 = new UnixSignal (Signum.SIGUSR2);
 				UnixSignal [] signals = new UnixSignal[]
 					{
-						new UnixSignal (Signum.SIGINT),
-						new UnixSignal(Signum.SIGTERM)
+						sigint,
+						sigterm,
+						sighup,
+						sigusr2
 					};
 
 				bool exit = false;
@@ -41,11 +48,16 @@ namespace HangmanService
 
 					if (id >= 0 && id < signals.Length)
 					{
-						if (signals [id].IsSet)
+						if (sigint.IsSet || sigterm.IsSet)
 						{
-							signals [id].Reset ();
+							sigint.Reset ();
+							sigterm.Reset ();
 							exit = true;
-						}
+						} else if (sighup.IsSet)
+							sighup.Reset ();
+						else if (sigusr2.IsSet)
+							sighup.Reset ();
+
 					}
 				}
 				/* Domon */
