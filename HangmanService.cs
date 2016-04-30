@@ -24,6 +24,7 @@ namespace HangmanService
 		private char[] nazivFilma;
 		private DateTime vremeStart;
 		private int brojSlova;
+		EStatusIgre status;
 
 		/*
 		 * Konstruktori
@@ -48,6 +49,7 @@ namespace HangmanService
 			brojPokusaja = 0;
 			vremeStart = DateTime.Now;
 			brojSlova = 0;
+			status = EStatusIgre.IGRA_AKTIVNA;
 			List<int> result = new List<int> ();
 
 			using (DataBase data = new DataBase ())
@@ -87,7 +89,7 @@ namespace HangmanService
 			List<int> result = new List<int> ();
 			int index;
 
-			if (brojPokusaja >= 6)
+			if (status != EStatusIgre.IGRA_AKTIVNA)
 				return result;
 
 			for (index = 0; index < nazivFilma.Length; index++)
@@ -95,7 +97,8 @@ namespace HangmanService
 					result.Add (index);
 
 			if (result.Count <= 0)
-				brojPokusaja++;
+				if (++brojPokusaja >= 6)
+					status = EStatusIgre.IGRA_ZAVRSENA_PORAZ;
 
 			return result;
 		}
@@ -106,6 +109,16 @@ namespace HangmanService
 		public int BrojPokusaja ()
 		{
 			return brojPokusaja;
+		}
+
+		/**
+		 * Metoda koja vraca status igre\n
+		 * 	- enumeraciju EStatusIgre
+		 */
+		[OperationContract]
+		public EStatusIgre Status ()
+		{
+			return status;
 		}
 
 		/*

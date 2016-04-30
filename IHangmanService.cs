@@ -40,6 +40,13 @@ namespace HangmanService
 		[FaultContract(typeof(ServiceFault))]
 		int BrojPokusaja ();
 
+		/**
+		 * Metoda koja vraca status igre\n
+		 * 	- enumeraciju EStatusIgre
+		 */
+		[OperationContract]
+		EStatusIgre Status ();
+
 		/*
 		 * Rekordi
 		 */
