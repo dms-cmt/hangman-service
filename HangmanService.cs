@@ -73,7 +73,10 @@ namespace HangmanService
 			result.Add (nazivFilma.Length);
 			for (int i = 0; i < nazivFilma.Length; i++)
 				if (nazivFilma [i] == ' ')
+				{
 					result.Add (i);
+					nazivFilma [i] = '\0';
+				}
 
 			return result.ToArray ();
 		}
@@ -88,17 +91,27 @@ namespace HangmanService
 		{
 			List<int> result = new List<int> ();
 			int index;
+			int i;
 
-			if (status != EStatusIgre.IGRA_AKTIVNA)
+			if (status != EStatusIgre.IGRA_AKTIVNA || slovo[0] == '\0')
 				return result;
 
 			for (index = 0; index < nazivFilma.Length; index++)
-				if (nazivFilma [index] == slovo[0])
+				if (nazivFilma [index] == slovo [0])
+				{
 					result.Add (index);
+					nazivFilma [index] = '\0';
+				}
 
 			if (result.Count <= 0)
 				if (++brojPokusaja >= 6)
 					status = EStatusIgre.IGRA_ZAVRSENA_PORAZ;
+
+			for (i = 0; i < nazivFilma.Length; i++)
+				if (nazivFilma [i] != '\0')
+					break;
+			if (i == nazivFilma.Length)
+				status = EStatusIgre.IGRA_ZAVRSENA_POBEDA;
 
 			return result;
 		}
