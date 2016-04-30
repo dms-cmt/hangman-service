@@ -1,4 +1,4 @@
-.TH "HangmanService.HangmanService" 3 "Sun Apr 3 2016" "Version 1.0" "hangman-service" \" -*- nroff -*-
+.TH "HangmanService.HangmanService" 3 "Sat Apr 30 2016" "Version 1.0" "hangman-service" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -12,10 +12,16 @@ Spisak osnovnih klasa:
 
 .in +1c
 .ti -1c
-.RI "int \fBPokreniIgru\fP ()"
+.RI "int[] \fBPokreniIgru\fP ()"
 .br
 .ti -1c
-.RI "List< int > \fBProvera\fP (char slovo)"
+.RI "List< int > \fBProvera\fP (char[] slovo)"
+.br
+.ti -1c
+.RI "int \fBBrojPokusaja\fP ()"
+.br
+.ti -1c
+.RI "EStatusIgre \fBStatus\fP ()"
 .br
 .ti -1c
 .RI "List< \fBRekord\fP > \fBPreuzmiRekorde\fP (int?br=null)"
@@ -24,16 +30,12 @@ Spisak osnovnih klasa:
 .RI "void \fBSnimiRekord\fP (String ime)"
 .br
 .in -1c
-.SS "Zajednički javni članovi"
-
-.in +1c
-.ti -1c
-.RI "static readonly int \fBMAX_ZIVOT\fP = 6"
-.br
-.in -1c
 .SH "Dokumentacija funkcija članica"
 .PP 
-.SS "int HangmanService\&.HangmanService\&.PokreniIgru ()\fC [inline]\fP"
+.SS "int HangmanService\&.HangmanService\&.BrojPokusaja ()\fC [inline]\fP"
+Metoda koja vraca broj preostalih zivota 
+.PP
+.SS "int [] HangmanService\&.HangmanService\&.PokreniIgru ()\fC [inline]\fP"
 Metoda koja pokrece igru 
 .br
  sve setuje na nulu i snima trenutno vreme na serveru 
@@ -43,7 +45,7 @@ Metoda vraca listu Rekorda
 .br
  id - broj rekorda za preuzimanje, ako je null vraca sve rekorde, default vrednost je null 
 .PP
-.SS "List<int> HangmanService\&.HangmanService\&.Provera (char slovo)\fC [inline]\fP"
+.SS "List<int> HangmanService\&.HangmanService\&.Provera (char[] slovo)\fC [inline]\fP"
 Metoda koja proverava da li se zadato slovo nalazi u imenu filma 
 .br
  vraca listu indexa na kojima se nalazi slovo, a ako slova nema, praznu listu 
@@ -52,6 +54,14 @@ Metoda koja proverava da li se zadato slovo nalazi u imenu filma
 Metoda dodaje rekord u bazu 
 .br
  ime - ime korisnika koji je resavao sudoku 
+.PP
+.SS "EStatusIgre HangmanService\&.HangmanService\&.Status ()\fC [inline]\fP"
+Metoda koja vraca status igre
+.br
+.IP "\(bu" 2
+enumeraciju EStatusIgre 
+.PP
+
 .PP
 
 

@@ -1,4 +1,4 @@
-.TH "HangmanService.IHangmanService" 3 "Sun Apr 3 2016" "Version 1.0" "hangman-service" \" -*- nroff -*-
+.TH "HangmanService.IHangmanService" 3 "Sat Apr 30 2016" "Version 1.0" "hangman-service" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -12,13 +12,16 @@ Spisak izvedenih klasa:
 
 .in +1c
 .ti -1c
-.RI "int \fBPokreniIgru\fP ()"
+.RI "int[] \fBPokreniIgru\fP ()"
 .br
 .ti -1c
-.RI "List< int > \fBProvera\fP (char slovo)"
+.RI "List< int > \fBProvera\fP (char[] slovo)"
 .br
 .ti -1c
-.RI "int \fBBrojZivota\fP ()"
+.RI "int \fBBrojPokusaja\fP ()"
+.br
+.ti -1c
+.RI "EStatusIgre \fBStatus\fP ()"
 .br
 .ti -1c
 .RI "List< \fBRekord\fP > \fBPreuzmiRekorde\fP (int?br=null)"
@@ -29,9 +32,11 @@ Spisak izvedenih klasa:
 .in -1c
 .SH "Dokumentacija funkcija članica"
 .PP 
-.SS "int HangmanService\&.IHangmanService\&.BrojZivota ()"
+.SS "int HangmanService\&.IHangmanService\&.BrojPokusaja ()"
 Metoda koja vraca broj preostalih zivota 
-.SS "int HangmanService\&.IHangmanService\&.PokreniIgru ()"
+.PP
+Definicija u 
+.SS "int [] HangmanService\&.IHangmanService\&.PokreniIgru ()"
 Metoda koja pokrece igru 
 .br
  sve setuje na nulu i snima trenutno vreme na serveru 
@@ -45,7 +50,7 @@ prima jedan argument koji predstavlja broj
 rekorda koje treba preuzeti, ako je null (default) vraca sve rekorde 
 .PP
 Definicija u 
-.SS "List<int> HangmanService\&.IHangmanService\&.Provera (char slovo)"
+.SS "List<int> HangmanService\&.IHangmanService\&.Provera (char[] slovo)"
 Metoda koja proverava da li se zadato slovo nalazi u imenu filma 
 .br
  vraca listu indexa na kojima se nalazi slovo, a ako slova nema, praznu listu 
@@ -55,6 +60,15 @@ Definicija u
 Metoda dodaje rekord u bazu 
 .br
  ime - ime korisnika koji je resavao sudoku 
+.PP
+Definicija u 
+.SS "EStatusIgre HangmanService\&.IHangmanService\&.Status ()"
+Metoda koja vraca status igre
+.br
+.IP "\(bu" 2
+enumeraciju EStatusIgre 
+.PP
+
 .PP
 Definicija u 
 
