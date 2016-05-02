@@ -47,6 +47,12 @@ namespace HangmanService
 		[OperationContract]
 		EStatusIgre Status ();
 
+		/**
+		 * Metoda koja vraca trenutno vreme igra
+		 */
+		[OperationContract]
+		long Vreme ();
+
 		/*
 		 * Rekordi
 		 */

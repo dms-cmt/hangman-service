@@ -134,6 +134,21 @@ namespace HangmanService
 			return status;
 		}
 
+		/**
+		 * Metoda koja vraca trenutno vreme igra
+		 */
+		[OperationContract]
+		public long Vreme ()
+		{
+			TimeSpan ukupnoVreme;
+			DateTime vremeEnd = DateTime.Now;
+			ukupnoVreme = DateTime.Now - vremeStart;
+			long vreme = ukupnoVreme.Seconds +			// Pretvara vreme u sekunde
+				ukupnoVreme.Minutes * 60 +
+				ukupnoVreme.Hours * 3600;
+			return vreme;
+		}
+
 		/*
 		 * Rekordi
 		 */
@@ -162,12 +177,7 @@ namespace HangmanService
 		 */
 		public void SnimiRekord (String ime)
 		{
-			TimeSpan ukupnoVreme;
-			DateTime vremeEnd = DateTime.Now;
-			ukupnoVreme = DateTime.Now - vremeStart;
-			int vreme = ukupnoVreme.Seconds +			// Pretvara vreme u sekunde
-				ukupnoVreme.Minutes * 60 +
-				ukupnoVreme.Hours * 3600;
+			long vreme = Vreme ();
 			using (DataBase data = new DataBase ())
 			{
 				data.Open ();
