@@ -53,6 +53,12 @@ namespace HangmanService
 		[OperationContract]
 		long Vreme ();
 
+		/**
+		 * Metoda koja vraca zadatu rec (film) kao listu karaktera
+		 */
+		[OperationContract]
+		char[] Resenje ();
+
 		/*
 		 * Rekordi
 		 */

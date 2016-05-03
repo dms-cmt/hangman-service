@@ -20,6 +20,7 @@ namespace HangmanService
 		 * Globalne promenjive
 		 */
 
+		private Film film;
 		private int brojPokusaja;
 		private char[] nazivFilma;
 		private DateTime vremeStart;
@@ -56,7 +57,6 @@ namespace HangmanService
 			{
 				int brojFilmova;
 				int rbFilma;
-				Film film;
 				Random random = new Random ();
 				try
 				{
@@ -147,6 +147,21 @@ namespace HangmanService
 				ukupnoVreme.Minutes * 60 +
 				ukupnoVreme.Hours * 3600;
 			return vreme;
+		}
+
+		/**
+		 * Metoda koja vraca zadatu rec (film) kao listu karaktera
+		 */
+		[OperationContract]
+		public char[] Resenje ()
+		{
+			char[] result;
+
+			if (status == EStatusIgre.IGRA_AKTIVNA)
+				status = EStatusIgre.IGRA_ZAVRSENA_PORAZ;
+			result = film.Naziv.ToUpper ().ToCharArray ();
+
+			return result;
 		}
 
 		/*
