@@ -206,8 +206,10 @@ namespace HangmanService
 
 		/**
 		 * Metoda koja iz niza brise element na zadatom indeksu\n
-		 * @param char[] niz - Niz iz koga se brise element
-		 * @param int indeks - indeks elementa koji se brise
+		 * 	@param char[] niz - Niz iz koga se brise element
+		 * 	@param int indeks - indeks elementa koji se brise
+		 *	
+		 *	@return char[] - indeks nakon brisanja
 		 */
 		private char[] ObrisiElementNiza (char[] niz, int indeks)
 		{
@@ -222,7 +224,47 @@ namespace HangmanService
 			{
 				if (j == indeks)
 					j++;
-				result[i] = niz[j];
+				result [i] = niz [j];
+			}
+
+			return result;
+		}
+
+		/**
+		 * Metoda koja dva karaktera menja sa jednim (Nj, Lj, Dj, Dz)
+		 * 	@param char[] tekst - niz karaktera u kojima se vrsi izmena
+		 * 
+		 * 	@return char[] - niz na kraju zamene
+		 */
+		char[] ZamenaKraktera (char[] tekst)
+		{
+			char[] result;
+			int i, j;
+			char[,] pattern = new char[4, 2] {
+				{ 'N', 'J' },
+				{ 'L', 'J' },
+				{ 'D', 'J' },
+				{ 'D', 'Z' }
+			};
+			char[] zaSmenu = new char[4] {
+				Convert.ToChar(Convert.ToUInt32("01CB")),	// Nj
+				Convert.ToChar(Convert.ToUInt32("01C8")),	// Lj
+				Convert.ToChar(Convert.ToUInt32("0189")),	// Đ
+				Convert.ToChar(Convert.ToUInt32("01C5"))	// Dz
+			};
+
+			result = tekst;
+			for (i = 0; i < result.Length - 1; i++)
+			{
+				for (j = 0; j < zaSmenu.Length; j++)
+				{
+					if (result [i] == pattern [j, 0] &&
+					    result [i + 1] == pattern [j, 1])
+					{
+						result [i] = zaSmenu [j];
+						result = ObrisiElementNiza (result, i + 1);
+					}
+				}
 			}
 
 			return result;
