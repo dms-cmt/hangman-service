@@ -199,6 +199,34 @@ namespace HangmanService
 				data.NoviRekord (ime, brojSlova, vreme);
 			}
 		}
+
+		/*
+		 * Privatne metode
+		 */
+
+		/**
+		 * Metoda koja iz niza brise element na zadatom indeksu\n
+		 * @param char[] niz - Niz iz koga se brise element
+		 * @param int indeks - indeks elementa koji se brise
+		 */
+		private char[] ObrisiElementNiza (char[] niz, int indeks)
+		{
+			int duzinaNiza = niz.Length;
+			char[] result = new char[duzinaNiza - 1];
+			int i, j;
+
+			if (indeks >= duzinaNiza || indeks < 0)
+				throw new IndexOutOfRangeException ();
+
+			for (i = 0, j = 0; i < duzinaNiza; i++, j++)
+			{
+				if (j == indeks)
+					j++;
+				result[i] = niz[j];
+			}
+
+			return result;
+		}
 	}
 }
 
