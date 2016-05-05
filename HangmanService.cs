@@ -99,7 +99,12 @@ namespace HangmanService
 				return result;
 
 			slovo = slovo.ToString ().ToUpper ().ToCharArray ();
-			slovo = ZamenaKraktera (slovo);
+			try
+			{
+				slovo = ZamenaKraktera (slovo);
+			} catch (Exception ex)
+			{
+			}
 
 			for (index = 0; index < nazivFilma.Length; index++)
 				if (nazivFilma [index] == slovo [0])
@@ -222,10 +227,10 @@ namespace HangmanService
 			char[] result = new char[duzinaNiza - 1];
 			int i, j;
 
-			if (indeks >= duzinaNiza || indeks < 0)
+			if (indeks > duzinaNiza || indeks < 0)
 				throw new IndexOutOfRangeException ();
 
-			for (i = 0, j = 0; i < duzinaNiza; i++, j++)
+			for (i = 0, j = 0; j < duzinaNiza; i++, j++)
 			{
 				if (j == indeks)
 					j++;
