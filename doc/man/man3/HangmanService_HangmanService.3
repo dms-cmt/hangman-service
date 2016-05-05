@@ -1,4 +1,4 @@
-.TH "HangmanService.HangmanService" 3 "Sat Apr 30 2016" "Version 1.0" "hangman-service" \" -*- nroff -*-
+.TH "HangmanService.HangmanService" 3 "Fri May 6 2016" "Version 1.0" "hangman-service" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -22,6 +22,12 @@ Spisak osnovnih klasa:
 .br
 .ti -1c
 .RI "EStatusIgre \fBStatus\fP ()"
+.br
+.ti -1c
+.RI "long \fBVreme\fP ()"
+.br
+.ti -1c
+.RI "char[] \fBResenje\fP ()"
 .br
 .ti -1c
 .RI "List< \fBRekord\fP > \fBPreuzmiRekorde\fP (int?br=null)"
@@ -50,6 +56,9 @@ Metoda koja proverava da li se zadato slovo nalazi u imenu filma
 .br
  vraca listu indexa na kojima se nalazi slovo, a ako slova nema, praznu listu 
 .PP
+.SS "char [] HangmanService\&.HangmanService\&.Resenje ()\fC [inline]\fP"
+Metoda koja vraca zadatu rec (film) kao listu karaktera 
+.PP
 .SS "void HangmanService\&.HangmanService\&.SnimiRekord (String ime)\fC [inline]\fP"
 Metoda dodaje rekord u bazu 
 .br
@@ -62,6 +71,9 @@ Metoda koja vraca status igre
 enumeraciju EStatusIgre 
 .PP
 
+.PP
+.SS "long HangmanService\&.HangmanService\&.Vreme ()\fC [inline]\fP"
+Metoda koja vraca trenutno vreme igra 
 .PP
 
 
