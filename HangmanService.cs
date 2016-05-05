@@ -65,6 +65,8 @@ namespace HangmanService
 					rbFilma = random.Next (brojFilmova);
 					film = data.PreuzmiFilm (rbFilma);
 					nazivFilma = film.Naziv.ToUpper ().ToCharArray ();
+					ZamenaKraktera (nazivFilma);
+					film.Naziv = nazivFilma.ToString ();
 				} catch (Exception ex)
 				{
 				}
@@ -95,6 +97,9 @@ namespace HangmanService
 
 			if (status != EStatusIgre.IGRA_AKTIVNA || slovo[0] == '\0')
 				return result;
+
+			slovo = slovo.ToString ().ToUpper ().ToCharArray ();
+			slovo = ZamenaKraktera (slovo);
 
 			for (index = 0; index < nazivFilma.Length; index++)
 				if (nazivFilma [index] == slovo [0])
