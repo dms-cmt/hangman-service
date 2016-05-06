@@ -60,7 +60,7 @@ namespace HangmanService
 
 					}
 				}
-				/* Domon */
+				/* Demon */
 
 				host.Close ();
 			}

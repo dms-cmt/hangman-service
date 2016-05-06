@@ -65,7 +65,7 @@ namespace HangmanService
 					rbFilma = random.Next (brojFilmova);
 					film = data.PreuzmiFilm (rbFilma);
 					nazivFilma = film.Naziv.ToUpper ().ToCharArray ();
-					ZamenaKraktera (nazivFilma);
+					nazivFilma = ZamenaKraktera (nazivFilma);
 					film.Naziv = Convert.ToString (nazivFilma);
 				} catch (Exception ex)
 				{
@@ -100,9 +100,11 @@ namespace HangmanService
 
 			for (i = 0; i < slovo.Length; i++)
 				slovo [i] = Char.ToUpper (slovo [i]);
+
 			try
 			{
-				slovo = ZamenaKraktera (slovo);
+				if(slovo.Length > 1)
+					slovo = ZamenaKraktera (slovo);
 			} catch (Exception ex)
 			{
 			}
@@ -170,7 +172,7 @@ namespace HangmanService
 
 			if (status == EStatusIgre.IGRA_AKTIVNA)
 				status = EStatusIgre.IGRA_ZAVRSENA_PORAZ;
-			result = film.Naziv.ToUpper ().ToCharArray ();
+			result = film.Naziv.ToCharArray ();
 
 			return result;
 		}
@@ -228,7 +230,7 @@ namespace HangmanService
 			char[] result = new char[duzinaNiza - 1];
 			int i, j;
 
-			if (indeks > duzinaNiza || indeks < 0)
+			if (indeks >= duzinaNiza || indeks < 0)
 				throw new IndexOutOfRangeException ();
 
 			for (i = 0, j = 0; j < duzinaNiza; i++, j++)
@@ -255,17 +257,18 @@ namespace HangmanService
 				{ 'N', 'J' },
 				{ 'L', 'J' },
 				{ 'D', 'J' },
-				{ 'D', 'Z' }
+				{ 'D', 'Ž' }
 			};
 			char[] zaSmenu = new char[4] {
-				Convert.ToChar(Convert.ToUInt32("01CB")),	// Nj
-				Convert.ToChar(Convert.ToUInt32("01C8")),	// Lj
-				Convert.ToChar(Convert.ToUInt32("0189")),	// Đ
-				Convert.ToChar(Convert.ToUInt32("01C5"))	// Dz
+				'\x01CB',		// Nj
+				'\x01C8',		// Lj
+				'\x0189',		// Đ
+				'\x01C5'		// Dž
 			};
+			int len = tekst.Length;
 
 			result = tekst;
-			for (i = 0; i < result.Length - 1; i++)
+			for (i = 0; i < len - 1; i++)
 			{
 				for (j = 0; j < zaSmenu.Length; j++)
 				{
@@ -274,6 +277,7 @@ namespace HangmanService
 					{
 						result [i] = zaSmenu [j];
 						result = ObrisiElementNiza (result, i + 1);
+						len--;
 					}
 				}
 			}
