@@ -98,7 +98,8 @@ namespace HangmanService
 			if (status != EStatusIgre.IGRA_AKTIVNA || slovo[0] == '\0')
 				return result;
 
-			slovo = slovo.ToString ().ToUpper ().ToCharArray ();
+			for (i = 0; i < slovo.Length; i++)
+				slovo [i] = Char.ToUpper (slovo [i]);
 			try
 			{
 				slovo = ZamenaKraktera (slovo);
