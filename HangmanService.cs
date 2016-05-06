@@ -24,7 +24,6 @@ namespace HangmanService
 		private int brojPokusaja;
 		private char[] nazivFilma;
 		private DateTime vremeStart;
-		private int brojSlova;
 		EStatusIgre status;
 
 		/*
@@ -49,7 +48,6 @@ namespace HangmanService
 		{
 			brojPokusaja = 0;
 			vremeStart = DateTime.Now;
-			brojSlova = 0;
 			status = EStatusIgre.IGRA_AKTIVNA;
 			List<int> result = new List<int> ();
 
@@ -209,7 +207,7 @@ namespace HangmanService
 			using (DataBase data = new DataBase ())
 			{
 				data.Open ();
-				data.NoviRekord (ime, brojSlova, vreme);
+				data.NoviRekord (ime, brojPokusaja, vreme);
 			}
 		}
 

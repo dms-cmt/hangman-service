@@ -142,23 +142,19 @@ namespace Hangman
 		 */
 		public void NoviRekord (String ime, int brojSlova, long vreme)
 		{
-			using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter ())
+			string query = "INSERT INTO rekordi (ime_korisnika, broj_pogresnih_slova, broj_sekundi)" +
+				"VALUES (@ime, @brojSlova, @vreme)";
+			using (MySqlCommand cmd = new MySqlCommand (query, conn))
 			{
-				string query = "INSERT INTO rekordi (ime, broj_pogresnih_slova, broj_sekundi)" +
-					"VALUES (@ime, @brojSlova, @vreme)";
-				using (MySqlCommand cmd = new MySqlCommand (query, conn))
+				try
 				{
-					try
-					{
-						cmd.Parameters.Add ("@ime", MySqlDbType.VarString, 30, "ime");
-						cmd.Parameters.Add ("@brojSlova", MySqlDbType.Int32, 1, "broj_pogresnih_slova");
-						cmd.Parameters.Add ("@vreme", MySqlDbType.Int64, 1, "broj_sekundi");
-						dataAdapter.InsertCommand = cmd;
-						dataAdapter.InsertCommand.ExecuteNonQuery ();
-					} catch (MySqlException ex)
-					{
-						throw ex;
-					}
+					cmd.Parameters.Add ("@ime", MySqlDbType.VarChar).Value = ime;
+					cmd.Parameters.Add ("@brojSlova", MySqlDbType.Int32).Value = brojSlova;
+					cmd.Parameters.Add ("@vreme", MySqlDbType.Int64).Value = vreme;
+					cmd.ExecuteNonQuery ();
+				} catch (MySqlException ex)
+				{
+					throw ex;
 				}
 			}
 		}
