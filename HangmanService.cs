@@ -66,7 +66,7 @@ namespace HangmanService
 					film = data.PreuzmiFilm (rbFilma);
 					nazivFilma = film.Naziv.ToUpper ().ToCharArray ();
 					ZamenaKraktera (nazivFilma);
-					film.Naziv = nazivFilma.ToString ();
+					film.Naziv = Convert.ToString (nazivFilma);
 				} catch (Exception ex)
 				{
 				}
