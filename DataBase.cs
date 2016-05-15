@@ -4,6 +4,8 @@ using MySql.Data.MySqlClient;
 using System.Data;
 using System.Configuration;
 
+using HangmanService;
+
 namespace Hangman
 {
 	public class DataBase : IDisposable
@@ -46,13 +48,30 @@ namespace Hangman
 		/*
 		 * Preuzima rekorde iz baze
 		 * 	br - broj rekorda, ili null za sve
+		 * 	d
 		 */
-		public List<Rekord> PreuzmiRekorde(int? br)
+		public List<Rekord> PreuzmiRekorde(int? br, ETipSortiranja tipSortiranja)
 		{
 			List <Rekord> rekordi = new List<Rekord> ();
 			MySqlCommand cmd;
 			MySqlDataReader reader;
-			string query = "SELECT * FROM rekordi ORDER BY broj_pogresnih_slova+broj_sekundi ASC";
+			string query;
+
+			switch (tipSortiranja)
+			{
+			case ETipSortiranja.NajboljiUkupno:
+				query = "SELECT * FROM rekordi ORDER BY broj_pogresnih_slova+broj_sekundi ASC";
+				break;
+			case ETipSortiranja.NajboljiPoBrojuSlova:
+				query = "SELECT * FROM rekordi ORDER BY broj_pogresnih_slova ASC";
+				break;
+			case ETipSortiranja.NajboljiPoVremenu:
+				query = "SELECT * FROM rekordi ORDER BY broj_sekundi ASC";
+				break;
+			default:
+				query = "SELECT * FROM rekordi ORDER BY broj_pogresnih_slova+broj_sekundi ASC";
+				break;
+			}
 
 			using (cmd = new MySqlCommand (query, conn))
 			{

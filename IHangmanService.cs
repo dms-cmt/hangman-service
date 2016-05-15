@@ -65,13 +65,17 @@ namespace HangmanService
 
 		/**
 		 * Metoda vraca listu Rekordas \n
-		 * prima jedan argument koji predstavlja broj \n
+		 * prima dva argumenta \n
+		 * br (int) - koji predstavlja broj
 		 * rekorda koje treba preuzeti, ako je null (default)
-		 * vraca sve rekorde
+		 * vraca sve rekorde \n
+		 * tipSortiranja (ETipSortiranja) - enumeracija
+		 * predstavlja tip sortiranja (default - NajboljiUkupno)
 		 */
 		[OperationContract]
 		[FaultContract(typeof(ServiceFault))]
-		List<Rekord> PreuzmiRekorde (int? br = null);
+		List<Rekord> PreuzmiRekorde (int? br = null,
+			ETipSortiranja tipSortiranja = ETipSortiranja.NajboljiUkupno);
 
 		/**
 		 * Metoda dodaje rekord u bazu \n

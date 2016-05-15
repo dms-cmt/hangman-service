@@ -179,18 +179,24 @@ namespace HangmanService
 		 */
 
 		/**
-		 * Metoda vraca listu Rekorda \n
-		 * 	id - broj rekorda za preuzimanje,
-		 *		ako je null vraca sve rekorde,
-		 *		default vrednost je null
-		 */
-		public List<Rekord> PreuzmiRekorde (int? br = null)
+		* Metoda vraca listu Rekordas \n
+		* prima dva argumenta \n
+		* br (int) - koji predstavlja broj
+		* rekorda koje treba preuzeti, ako je null (default)
+		* vraca sve rekorde \n
+		* tipSortiranja (ETipSortiranja) - enumeracija
+		* predstavlja tip sortiranja (default - NajboljiUkupno)
+		*/
+		[OperationContract]
+		[FaultContract(typeof(ServiceFault))]
+		public List<Rekord> PreuzmiRekorde (int? br = null,
+			ETipSortiranja tipSortiranja = ETipSortiranja.NajboljiUkupno)
 		{
 			List<Rekord> rekordi;
 			using (DataBase data = new DataBase ())
 			{
 				data.Open ();
-				rekordi = data.PreuzmiRekorde (br);
+				rekordi = data.PreuzmiRekorde (br, tipSortiranja);
 			}
 
 			return rekordi;
