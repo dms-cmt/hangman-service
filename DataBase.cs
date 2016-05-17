@@ -59,9 +59,6 @@ namespace Hangman
 
 			switch (tipSortiranja)
 			{
-			case ETipSortiranja.NajboljiUkupno:
-				query = "SELECT * FROM rekordi ORDER BY broj_pogresnih_slova+broj_sekundi ASC";
-				break;
 			case ETipSortiranja.NajboljiPoBrojuSlova:
 				query = "SELECT * FROM rekordi ORDER BY broj_pogresnih_slova ASC";
 				break;
