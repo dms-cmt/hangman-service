@@ -9,7 +9,7 @@
 start()
 {
     initlog -c "echo -n Startint Hangman service: "
-    /opt/hangman/hangman-service.exe &
+    /var/www/dms-cmt.ddns.net/service/hangman-service.exe &
     touch /var/lock/subsys/hangman
     success $"Hangman service startup"
     #echo $"Hangman service startup"
