@@ -65,6 +65,8 @@ namespace HangmanService
 					nazivFilma = ZamenaKraktera (nazivFilma);
 				} catch (Exception ex)
 				{
+					ServiceFault fault = new ServiceFault ("Greska prilikom preuzimanja filma iz baze!");
+					throw new FaultException<ServiceFault> (fault);
 				}
 			}
 
@@ -103,6 +105,7 @@ namespace HangmanService
 					slovo = ZamenaKraktera (slovo);
 			} catch (Exception ex)
 			{
+				throw new FaultException ("Greska prilokom provere skolva");
 			}
 
 			for (index = 0; index < nazivFilma.Length; index++)
@@ -150,7 +153,6 @@ namespace HangmanService
 		public long Vreme ()
 		{
 			TimeSpan ukupnoVreme;
-			DateTime vremeEnd = DateTime.Now;
 			ukupnoVreme = DateTime.Now - vremeStart;
 			long vreme = ukupnoVreme.Seconds +			// Pretvara vreme u sekunde
 				ukupnoVreme.Minutes * 60 +
@@ -161,7 +163,6 @@ namespace HangmanService
 		/**
 		 * Metoda koja vraca zadatu rec (film) kao listu karaktera
 		 */
-		[OperationContract]
 		public char[] Resenje ()
 		{
 			char[] result;
@@ -169,6 +170,12 @@ namespace HangmanService
 			if (status == EStatusIgre.IGRA_AKTIVNA)
 				status = EStatusIgre.IGRA_ZAVRSENA_PORAZ;
 			result = film.Naziv.ToCharArray ();
+			
+			if(result.Length < 1)
+			{
+				ServiceFault fault = new ServiceFault ("Greska prilikom preuzimanja resenja!");
+				throw new FaultException<ServiceFault> (fault);
+			}
 
 			return result;
 		}
@@ -186,16 +193,21 @@ namespace HangmanService
 		* tipSortiranja (ETipSortiranja) - enumeracija
 		* predstavlja tip sortiranja (default - NajboljiUkupno)
 		*/
-		[OperationContract]
-		[FaultContract(typeof(ServiceFault))]
 		public List<Rekord> PreuzmiRekorde (int? br = null,
 			ETipSortiranja tipSortiranja = ETipSortiranja.NajboljiUkupno)
 		{
 			List<Rekord> rekordi;
 			using (DataBase data = new DataBase ())
 			{
-				data.Open ();
-				rekordi = data.PreuzmiRekorde (br, tipSortiranja);
+				try
+				{
+					data.Open ();
+					rekordi = data.PreuzmiRekorde (br, tipSortiranja);
+				} catch (Exception ex)
+				{
+					ServiceFault fault = new ServiceFault ("Greska prilikom preuzimanja rekorda!");
+					throw new FaultException<ServiceFault> (fault);
+				}
 			}
 
 			return rekordi;
@@ -210,8 +222,15 @@ namespace HangmanService
 			long vreme = Vreme ();
 			using (DataBase data = new DataBase ())
 			{
-				data.Open ();
-				data.NoviRekord (ime, brojPokusaja, vreme);
+				try
+				{
+					data.Open ();
+					data.NoviRekord (ime, brojPokusaja, vreme);
+				} catch (Exception ex)
+				{
+					ServiceFault fault = new ServiceFault ("Greska prilikom snimanja rekorda!");
+					throw new FaultException<ServiceFault> (fault);
+				}
 			}
 		}
 
@@ -278,8 +297,14 @@ namespace HangmanService
 					    result [i + 1] == pattern [j, 1])
 					{
 						result [i] = zaSmenu [j];
-						result = ObrisiElementNiza (result, i + 1);
-						len--;
+						try
+						{
+							result = ObrisiElementNiza (result, i + 1);
+							len--;
+						} catch (Exception ex)
+						{
+							throw new IndexOutOfRangeException ();
+						}
 					}
 				}
 			}

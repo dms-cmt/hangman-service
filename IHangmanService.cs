@@ -57,6 +57,7 @@ namespace HangmanService
 		 * Metoda koja vraca zadatu rec (film) kao listu karaktera
 		 */
 		[OperationContract]
+		[FaultContract(typeof(ServiceFault))]
 		char[] Resenje ();
 
 		/*

@@ -43,13 +43,21 @@ namespace Hangman
 		/*
 		 * Konstruktori
 		 */
+		
+		/**
+		 * Dafault konstruktor\n
+		 * 	bez argumenata, samo kreira objekat
+		 */
+		public ServiceFault ()
+		{
+		}
 
 		/**
 		 * Prima dva argumenta:\n
 		 * 	errorMeesage - poruka o gresci\n
 		 *  errorDetail - detalji o gresci
 		 */
-		public ServiceFault (string errorMessage, string errorDetail)
+		public ServiceFault (string errorMessage, string errorDetail = "")
 		{
 			ErrorMessage = errorMessage;
 			ErrorDetail = errorDetail;
