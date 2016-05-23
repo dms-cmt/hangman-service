@@ -105,7 +105,6 @@ namespace HangmanService
 					slovo = ZamenaKraktera (slovo);
 			} catch (Exception ex)
 			{
-				throw new FaultException ("Greska prilokom provere skolva");
 			}
 
 			for (index = 0; index < nazivFilma.Length; index++)
@@ -303,7 +302,6 @@ namespace HangmanService
 							len--;
 						} catch (Exception ex)
 						{
-							throw new IndexOutOfRangeException ();
 						}
 					}
 				}

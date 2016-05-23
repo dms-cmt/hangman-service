@@ -30,7 +30,6 @@ namespace HangmanService
 		 * 	a ako slova nema, praznu listu
 		 */
 		[OperationContract]
-		[FaultContract(typeof(ServiceFault))]
 		List<int> Provera (char[] slovo);
 
 		/**
